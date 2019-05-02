@@ -1,6 +1,5 @@
 package com.store.storeapp.models;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -35,7 +34,7 @@ public class Product {
 	private String name;
 	
 	@NonNull
-	@Column(length=20)
+	@Column(length=30)
 	private String brand;
 	
 	@NonNull
@@ -68,13 +67,14 @@ public class Product {
 		this.order = order;
 	}
 	
-	public List<ProviderProduct> getProviders(){
+	public List<ProviderProduct> getProviders() {
 		return providers;
 	}
-	public void setProviders(ArrayList<ProviderProduct> providers) {
+
+	public void setProviders(List<ProviderProduct> providers) {
 		this.providers = providers;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
@@ -82,13 +82,14 @@ public class Product {
 		this.name = name;
 	}
 	
-	private String getBrand() {
+	public String getBrand() {
 		return brand;
 	}
-	private void setBrand(String brand) {
+
+	public void setBrand(String brand) {
 		this.brand = brand;
 	}
-	
+
 	public float getPrice() {
 		return price;
 	}
