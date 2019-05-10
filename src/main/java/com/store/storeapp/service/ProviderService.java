@@ -1,6 +1,7 @@
 package com.store.storeapp.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,15 +19,30 @@ public class ProviderService {
 		return providerRepository.findAll();
 	}
 	
+	public Optional<Provider> getOneProvider(Long id){
+		return providerRepository.findById(id);
+	}
+	
 	public void setProvider(Provider provider) {
 		providerRepository.save(provider);
 	}
 	
-	public void updateProvider(Provider id) {
-		providerRepository.save(id);
-	}
+	public Optional<Provider> updateProvider(Provider updateProvider, Long id) {
+		Optional<Provider> provider = getOneProvider(id);
+		if(provider.isPresent()) {
+			return provider = Optional.of(providerRepository.save(updateProvider));
+		} else {
+			return null;
+		}
+	} 
 	
-	public void deleteProvider(Provider id) {
-		providerRepository.delete(id);
+	public boolean deleteProvider(Provider id) {
+		List<Provider> provider = getAllProvider();
+		if(provider.contains(id)) {
+			providerRepository.delete(id);
+			return true;
+		} else {
+			return false;
+		}
 	}
 }

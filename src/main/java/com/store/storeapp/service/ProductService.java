@@ -4,8 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.store.storeapp.models.Product;
@@ -21,8 +19,8 @@ public class ProductService {
 	public List<Product> getAllProducts(){
 		return productRepository.findAll();
 	}
-	//busca apenas um
 	
+	//busca apenas um
 	public Optional<Product> getOneProduct(Long id) {
 		return productRepository.findById(id);
 	}	
@@ -31,27 +29,24 @@ public class ProductService {
 	public Product setProduct(Product product) {
 		return productRepository.save(product);
 	}
-	/*
+	
 	//atualiza
-	public Product updateProduct(Product updateProduct, Long id) {
-		return productRepository.findById(id)
-				.map(product -> {
-					product.setProductType(updateProduct.getProductType());
-					product.setOrder(updateProduct.getOrder());
-					product.setProviders(updateProduct.getProviders());
-					product.setName(updateProduct.getName());
-					product.setBrand(updateProduct.getBrand());
-					product.setPrice(updateProduct.getPrice());
-					product.setDescription(updateProduct.getDescription());
-				}).orElseGet(() -> {
-					updateProduct.setProductId(id);
-					return productRepository.save(updateProduct);
-				});
+	public Optional<Product> updateProduct(Product updateProduct, Long id) {
+		Optional<Product> product = getOneProduct(id);
+		if(product.isPresent()) {
+			return product = Optional.of(productRepository.save(updateProduct));
+		}
+		return null;
 	}
-	*/
+	
 	//deleta
-	public void deleteProduct(Product id) {
-		productRepository.delete(id);
+	public boolean deleteProduct(Product id) {
+		List<Product> product = getAllProducts();
+		if(product.contains(id)) {
+			productRepository.delete(id);
+			return true;
+		}
+		return false;
 	}
 
 }

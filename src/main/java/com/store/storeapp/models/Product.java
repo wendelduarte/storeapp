@@ -45,6 +45,24 @@ public class Product {
 	//construct
 	public Product() {}
 	
+	public Product(long productId, ProductType productType, ConfirmOrder order, List<ProviderProduct> providers,
+			String name, String brand, float price, String description) {
+		super();
+		this.productId = productId;
+		this.productType = productType;
+		this.order = order;
+		this.providers = providers;
+		this.name = name;
+		this.brand = brand;
+		this.price = price;
+		this.description = description;
+	}
+
+	public Product(long productId) {
+		super();
+		this.productId = productId;
+	}
+
 	//getters and setters
 	public long getProductId() {
 		return productId;
