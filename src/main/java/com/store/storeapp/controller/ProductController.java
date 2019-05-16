@@ -41,7 +41,25 @@ public class ProductController {
 	}
 	
 	@ResponseStatus(HttpStatus.OK)
-	@PostMapping("/product/post")
+	@GetMapping("/product/asc")
+	public List<Product> orderByPrice(){
+		return productService.orderByPriceAsc();
+	}
+	
+	@ResponseStatus(HttpStatus.OK)
+	@GetMapping("/product/desc")
+	public List<Product> orderByPriceDesc(){
+		return productService.orderByPriceDesc();
+	}
+	
+	@GetMapping("/product/search/{name}")
+	public ResponseEntity<List<?>> searchProduct(@PathVariable String name){
+		List<Product> products = productService.searchProduct(name);
+		return utilM.searchProduct(products);
+	}
+	
+	@ResponseStatus(HttpStatus.OK)
+	@PostMapping("/product")
 	public Product postProduct(@RequestBody Product newProduct) {
 		return productService.setProduct(newProduct);
 	}
@@ -53,7 +71,7 @@ public class ProductController {
 	}
 	
 	@DeleteMapping("/product/{id}")
-	public ResponseEntity<?> deleteProduct(@PathVariable Product id){
+	public ResponseEntity<?> deleteProduct(@PathVariable Long id){
 		boolean product = productService.deleteProduct(id); 
 		return utilM.delete(product);
 	}

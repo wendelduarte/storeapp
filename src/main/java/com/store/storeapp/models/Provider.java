@@ -1,6 +1,5 @@
 package com.store.storeapp.models;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -20,8 +19,7 @@ public class Provider {
 	private long providerId;
 	
 	@ManyToMany
-	private List<ProviderProduct> products;
-	
+	private List<Product> product;
 	@NonNull
 	@Column(length=50)
 	private String businessName;
@@ -66,13 +64,13 @@ public class Provider {
 	public void setProviderId(long providerId) {
 		this.providerId = providerId;
 	}
-
-	public List<ProviderProduct> getProducts() {
-		return products;
+	
+	public List<Product> getProduct() {
+		return product;
 	}
 
-	public void setProducts(ArrayList<ProviderProduct> products) {
-		this.products = products;
+	public void setProduct(List<Product> product) {
+		this.product = product;
 	}
 
 	public String getBusinessName() {

@@ -39,11 +39,31 @@ public class ProductService {
 		return null;
 	}
 	
+	//ordena produto por menor preço
+	public List<Product> orderByPriceAsc(){
+		return productRepository.getProductOrderByPrice();
+	}
+	
+	//ordena produto por maior preço
+	public List<Product> orderByPriceDesc(){
+		return productRepository.getProductOrderByPriceDesc();
+	}
+	
+	public List<Product> searchProduct(String name){
+		return productRepository.getByName(name);
+	}
+	
 	//deleta
-	public boolean deleteProduct(Product id) {
-		List<Product> product = getAllProducts();
-		if(product.contains(id)) {
-			productRepository.delete(id);
+	public boolean deleteProduct(Long id) {
+		/*
+		// deleter product order 
+		id.getProductOrder();
+		erepo.delete
+		*/
+		if(getOneProduct(id) != null) {
+			
+			
+			productRepository.deleteById(id);
 			return true;
 		}
 		return false;

@@ -17,6 +17,13 @@ public class Utils {
 		return new ResponseEntity<List<?>>(a, HttpStatus.OK);
 		}
 	
+	public ResponseEntity<List<?>> searchProduct(List<?> a){
+		if(a.isEmpty()) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<List<?>>(a, HttpStatus.OK);
+		}
+	
 	public ResponseEntity<Optional<?>> getOne(Optional<?> a){
 		if(a.isPresent()) {
 			return new ResponseEntity<Optional<?>>(a, HttpStatus.OK);

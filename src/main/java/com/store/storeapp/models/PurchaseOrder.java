@@ -1,12 +1,14 @@
 package com.store.storeapp.models;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import org.springframework.lang.NonNull;
@@ -22,8 +24,8 @@ public class PurchaseOrder {
 	@OneToOne
 	private StatusOrder orderStatus;
 	
-	@OneToOne
-	private ConfirmOrder confirmOrder;
+	@OneToMany
+	private List<ProductOrder> productOrder;
 	
 	@ManyToOne
 	private Customer customerId;
@@ -34,6 +36,8 @@ public class PurchaseOrder {
 	@NonNull
 	private String formPayment;
 	
+	private float total;
+
 	//construct
 	public PurchaseOrder() {}
 
@@ -53,13 +57,13 @@ public class PurchaseOrder {
 	public void setOrderStatus(StatusOrder orderStatus) {
 		this.orderStatus = orderStatus;
 	}
-
-	public ConfirmOrder getConfirmOrder() {
-		return confirmOrder;
+	
+	public List<ProductOrder> getProductOrder() {
+		return productOrder;
 	}
 
-	public void setConfirmOrder(ConfirmOrder confirmOrder) {
-		this.confirmOrder = confirmOrder;
+	public void setProductOrder(List<ProductOrder> productOrder) {
+		this.productOrder = productOrder;
 	}
 
 	public Customer getCustomerId() {
@@ -86,6 +90,12 @@ public class PurchaseOrder {
 		this.formPayment = formPayment;
 	}
 	
-	
+	public float getTotal() {
+		return total;
+	}
+
+	public void setTotal(float total) {
+		this.total = total;
+	}
 	
 }

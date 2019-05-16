@@ -1,46 +1,51 @@
 package com.store.storeapp.models;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class ProviderProduct {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer idProviderProduct;
 	
-	@ManyToMany
-	private List<Product> products;
+	@OneToOne
+	private Product productId;
 	
-	@ManyToMany
-	private List<Provider> providers;
+	@OneToOne
+	private Provider providerId;
 	
 	//construct
 	public ProviderProduct() {}
 
-	public List<Product> getProducts() {
-		return products;
+	public Integer getIdProviderProduct() {
+		return idProviderProduct;
 	}
 
-	public void setProducts(List<Product> products) {
-		this.products = products;
+	public void setIdProviderProduct(Integer idProviderProduct) {
+		this.idProviderProduct = idProviderProduct;
 	}
 
-	public List<Provider> getProviders() {
-		return providers;
+	public Product getProductId() {
+		return productId;
 	}
 
-	public void setProviders(List<Provider> providers) {
-		this.providers = providers;
+	public void setProductId(Product productId) {
+		this.productId = productId;
 	}
 
-	//getters and setters
-	
+	public Provider getProviderId() {
+		return providerId;
+	}
+
+	public void setProviderId(Provider providerId) {
+		this.providerId = providerId;
+	}
+
 	
 }
 

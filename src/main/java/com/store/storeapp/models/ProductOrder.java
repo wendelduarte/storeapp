@@ -1,37 +1,41 @@
 package com.store.storeapp.models;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 
 import org.springframework.lang.NonNull;
 
 @Entity
-public class ConfirmOrder {
+public class ProductOrder {
 
 		@Id
 		@GeneratedValue(strategy=GenerationType.IDENTITY)
-		private Integer confirmOrderId;
+		private Integer productOrderId;
 	
-		@OneToOne
+		@ManyToOne
 		private PurchaseOrder purchaseOrder;
 		
 		@NonNull
-		@OneToMany
-		private List<Product> productsOrder;
+		@ManyToOne
+		private Product productId;
 		
 		@NonNull
 		private int quantityProduct;
 		
 		//construct
-		public ConfirmOrder(){}
+		public ProductOrder(){}
 
-		//Getter and setters
+		public Integer getProductOrderId() {
+			return productOrderId;
+		}
+
+		public void setProductOrderId(Integer productOrderId) {
+			this.productOrderId = productOrderId;
+		}
+
 		public PurchaseOrder getPurchaseOrder() {
 			return purchaseOrder;
 		}
@@ -40,12 +44,12 @@ public class ConfirmOrder {
 			this.purchaseOrder = purchaseOrder;
 		}
 
-		public List<Product> getProductsOrder() {
-			return productsOrder;
+		public Product getProductId() {
+			return productId;
 		}
 
-		public void setProductsOrder(List<Product> productsOrder) {
-			this.productsOrder = productsOrder;
+		public void setProductId(Product productId) {
+			this.productId = productId;
 		}
 
 		public int getQuantityProduct() {
@@ -54,5 +58,5 @@ public class ConfirmOrder {
 
 		public void setQuantityProduct(int quantityProduct) {
 			this.quantityProduct = quantityProduct;
-		}		
+		}
 }

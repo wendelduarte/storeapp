@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.springframework.lang.NonNull;
 
@@ -23,11 +24,11 @@ public class Product {
 	@ManyToOne
 	private ProductType productType;
 	
-	@ManyToOne
-	private ConfirmOrder order;
+	@OneToMany
+	private List<ProductOrder> productOrder;
 	
 	@ManyToMany
-	private List<ProviderProduct> providers;
+	private List<Provider> provider;
 	
 	@NonNull
 	@Column(length=30)
@@ -38,25 +39,28 @@ public class Product {
 	private String brand;
 	
 	@NonNull
-	private float price;
+	private Float price;
 	
 	private String description;
 	
 	//construct
 	public Product() {}
 	
-	public Product(long productId, ProductType productType, ConfirmOrder order, List<ProviderProduct> providers,
-			String name, String brand, float price, String description) {
+	
+
+	public Product(long productId, ProductType productType, List<ProductOrder> productOrder,
+			String name, String brand, Float price, String description) {
 		super();
 		this.productId = productId;
 		this.productType = productType;
-		this.order = order;
-		this.providers = providers;
+		this.productOrder = productOrder;
 		this.name = name;
 		this.brand = brand;
 		this.price = price;
 		this.description = description;
 	}
+
+
 
 	public Product(long productId) {
 		super();
@@ -78,19 +82,24 @@ public class Product {
 		this.productType = productType;
 	}
 	
-	public ConfirmOrder getOrder() {
-		return order;
-	}
-	public void setOrder(ConfirmOrder order) {
-		this.order = order;
-	}
-	
-	public List<ProviderProduct> getProviders() {
-		return providers;
+	public List<ProductOrder> getProductOrder() {
+		return productOrder;
 	}
 
-	public void setProviders(List<ProviderProduct> providers) {
-		this.providers = providers;
+	public void setProductOrder(List<ProductOrder> productOrder) {
+		this.productOrder = productOrder;
+	}
+	
+	public List<Provider> getProvider() {
+		return provider;
+	}
+	
+	public void setProvider(List<Provider> provider) {
+		this.provider = provider;
+	}
+
+	public void setPrice(Float price) {
+		this.price = price;
 	}
 
 	public String getName() {
