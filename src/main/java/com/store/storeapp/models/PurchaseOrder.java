@@ -1,17 +1,20 @@
 package com.store.storeapp.models;
 
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 import org.springframework.lang.NonNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class PurchaseOrder {
@@ -21,14 +24,16 @@ public class PurchaseOrder {
 	private long purchaseOrderId;
 	
 	@NonNull
-	@OneToOne
+	@ManyToOne
+	@JoinColumn(name="STATUS_ORDER_FK")
 	private StatusOrder orderStatus;
 	
-	@OneToMany
-	private List<ProductOrder> productOrder;
-	
 	@ManyToOne
-	private Customer customerId;
+	@JoinColumn(name="CUSTOMER_FK")
+	private Customer customer;
+
+	@OneToMany(cascade=CascadeType.ALL, mappedBy = "purchaseOrder")
+	private Set<ProductOrder> productOrder;	
 	
 	@NonNull
 	private Date orderDate;
@@ -50,28 +55,30 @@ public class PurchaseOrder {
 		this.purchaseOrderId = purchaseOrderId;
 	}
 
+	@JsonIgnore
 	public StatusOrder getOrderStatus() {
 		return orderStatus;
+	}
+
+	public Set<ProductOrder> getProductOrder() {
+		return productOrder;
+	}
+
+	public void setProductOrder(Set<ProductOrder> productOrder) {
+		this.productOrder = productOrder;
 	}
 
 	public void setOrderStatus(StatusOrder orderStatus) {
 		this.orderStatus = orderStatus;
 	}
-	
-	public List<ProductOrder> getProductOrder() {
-		return productOrder;
+
+	@JsonIgnore
+	public Customer getCustomer() {
+		return customer;
 	}
 
-	public void setProductOrder(List<ProductOrder> productOrder) {
-		this.productOrder = productOrder;
-	}
-
-	public Customer getCustomerId() {
-		return customerId;
-	}
-
-	public void setCustomerId(Customer customerId) {
-		this.customerId = customerId;
+	public void setCustomer(Customer customerId) {
+		this.customer = customerId;
 	}
 
 	public Date getOrderDate() {

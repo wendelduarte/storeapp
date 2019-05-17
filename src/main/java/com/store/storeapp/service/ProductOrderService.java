@@ -35,10 +35,10 @@ public class ProductOrderService {
 		return null;
 	}
 	
-	public boolean deleteProductOrder(ProductOrder id) {
-		List<ProductOrder> productOrder = getAllProductOrder();
-		if(productOrder.contains(id)) {
-			productOrderRepository.delete(id);
+	public boolean deleteProductOrder(ProductOrder productOrder) {
+		List<ProductOrder> allProductOrder = getAllProductOrder();
+		if(allProductOrder.contains(productOrder)) {
+			productOrderRepository.delete(productOrder);
 			return true;
 		}
 		return false;

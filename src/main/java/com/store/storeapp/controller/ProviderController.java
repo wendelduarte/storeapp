@@ -53,9 +53,9 @@ public class ProviderController {
 		return utilM.update(provider);
 	}
 	
-	@DeleteMapping("/provider/{id}")
-	public ResponseEntity<?> deleteProvider(@PathVariable Provider id) {
-		boolean provider = providerService.deleteProvider(id);
-		return utilM.delete(provider);
+	@DeleteMapping("/provider/{provider}")
+	public ResponseEntity<?> deleteProvider(@PathVariable Provider provider) {
+		boolean value = providerService.deleteProvider(provider);
+		return utilM.delete(value);
 	}
 }

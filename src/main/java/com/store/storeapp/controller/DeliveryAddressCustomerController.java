@@ -31,15 +31,15 @@ public class DeliveryAddressCustomerController {
 	@Autowired
 	private Utils utilM;
 	
-	@GetMapping("/address/{customerId}")
-	public ResponseEntity<List<?>> getAllDeliveryAddressByCustomerId(@PathVariable Customer customerId){
-		List<DeliveryAddressCustomer> address = dacService.getAllDeliveryAddressByCustomerId(customerId);
+	@GetMapping("/address/{customer}")
+	public ResponseEntity<List<?>> getAllDeliveryAddressByCustomer(@PathVariable Customer customer){
+		List<DeliveryAddressCustomer> address = dacService.getAllDeliveryAddressByCustomer(customer);
 		return utilM.getAll(address);
 	}
 	
-	@GetMapping("/address/{customerId}/{id}")
-	public ResponseEntity<Optional<?>> getOneDeliveryAddressByCustomerId(@PathVariable Customer customerId, @PathVariable DeliveryAddressCustomer id){
-		Optional<DeliveryAddressCustomer> address = dacService.getOneDeliveryAddressByCustomerId(customerId, id);
+	@GetMapping("/address/{customer}/{deliveryCustomer}")
+	public ResponseEntity<Optional<?>> getOneDeliveryAddressByCustomer(@PathVariable Customer customer, @PathVariable DeliveryAddressCustomer deliveryCustomer){
+		Optional<DeliveryAddressCustomer> address = dacService.getOneDeliveryAddressByCustomer(customer, deliveryCustomer);
 		return utilM.getOne(address);
 	}
 	
@@ -49,15 +49,15 @@ public class DeliveryAddressCustomerController {
 		return dacService.setDeliveryAddress(deliveryAddress);
 	}
 	
-	@PutMapping("/address/{customerId}/{id}")
-	public ResponseEntity<Optional<?>> updateAddress(@RequestBody DeliveryAddressCustomer updateDeliveryAddress, @PathVariable Customer customerId, @PathVariable DeliveryAddressCustomer id){
-		Optional<DeliveryAddressCustomer> address = dacService.updateDeliveryAddress(updateDeliveryAddress, customerId, id);
+	@PutMapping("/address/{customer}/{deliveryCustomer}")
+	public ResponseEntity<Optional<?>> updateAddress(@RequestBody DeliveryAddressCustomer updateDeliveryAddress, @PathVariable Customer customer, @PathVariable DeliveryAddressCustomer deliveryCustomer){
+		Optional<DeliveryAddressCustomer> address = dacService.updateDeliveryAddress(updateDeliveryAddress, customer, deliveryCustomer);
 		return utilM.update(address);
 	}
 	
-	@DeleteMapping("/address/{customerId}/{id}")
-	public ResponseEntity<?> deleteDeliveryAddres(@PathVariable Customer customerId, @PathVariable DeliveryAddressCustomer id){
-		boolean address = dacService.deleteDeliveryAddres(customerId, id);
+	@DeleteMapping("/address/{customer}/{deliveryCUstomer}")
+	public ResponseEntity<?> deleteDeliveryAddres(@PathVariable Customer customer, @PathVariable DeliveryAddressCustomer deliveryCustomer){
+		boolean address = dacService.deleteDeliveryAddres(customer, deliveryCustomer);
 		return utilM.delete(address);
 	}
 }

@@ -6,9 +6,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import org.springframework.lang.NonNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class CardCustomer {
@@ -18,7 +21,8 @@ public class CardCustomer {
 	private long cardId;
 	
 	@ManyToOne
-	private Customer customerId;
+	@JoinColumn(name="CUSTOMER_FK")
+	private Customer customer;
 	
 	@NonNull
 	private String nameCardHolder;
@@ -47,12 +51,13 @@ public class CardCustomer {
 		this.cardId = cardId;
 	}
 
-	public Customer getCustomerId() {
-		return customerId;
+	@JsonIgnore
+	public Customer getCustomer() {
+		return customer;
 	}
 
-	public void setCustomerId(Customer customerId) {
-		this.customerId = customerId;
+	public void setCustomerId(Customer customer) {
+		this.customer = customer;
 	}
 
 	public String getNameCardHolder() {

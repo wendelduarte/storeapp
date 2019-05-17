@@ -52,9 +52,9 @@ public class StatusOrderController {
 		return utilM.update(status);
 	}
 	
-	@DeleteMapping("/status/{id}")
-	public ResponseEntity<?> deleteStatus(@PathVariable StatusOrder id){
-		boolean status = statusOrderService.deleteStatus(id);
+	@DeleteMapping("/status/{statusOrder}")
+	public ResponseEntity<?> deleteStatus(@PathVariable StatusOrder statusOrder){
+		boolean status = statusOrderService.deleteStatus(statusOrder);
 		return utilM.delete(status);
 	}
 }

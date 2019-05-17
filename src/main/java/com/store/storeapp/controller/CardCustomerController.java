@@ -27,8 +27,8 @@ public class CardCustomerController {
 	private Utils utilM;
 	
 	@GetMapping("/card/{customerId}")
-	public ResponseEntity<List<?>> getAllCardOfCustomer(@PathVariable Customer customerId){
-		List<CardCustomer> allCardOfCustomer = cardCustomerService.getAllCardByCustomerId(customerId);
+	public ResponseEntity<List<?>> getAllCardOfCustomer(@PathVariable Customer customer){
+		List<CardCustomer> allCardOfCustomer = cardCustomerService.getAllCardByCustomer(customer);
 		return utilM.getAll(allCardOfCustomer);
 	}
 	
@@ -38,9 +38,9 @@ public class CardCustomerController {
 		return cardCustomerService.setCardCustomer(card);
 	}
 	
-	@DeleteMapping("/card/{customerId}/{id}")
-	public ResponseEntity<?> deleteProduct(@PathVariable Customer customerId, @PathVariable CardCustomer id){
-		boolean card = cardCustomerService.deleteCardCustomer(customerId, id);
+	@DeleteMapping("/card/{customer}/{cardCustomer}")
+	public ResponseEntity<?> deleteProduct(@PathVariable Customer customer, @PathVariable CardCustomer cardCustomer){
+		boolean card = cardCustomerService.deleteCardCustomer(customer, cardCustomer);
 		return utilM.delete(card);
 	}
 }

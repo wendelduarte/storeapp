@@ -15,18 +15,18 @@ public class CardCustomerService {
 	@Autowired
 	private CardCustomerRepository cardCustomerRepository;
 		
-	public List<CardCustomer> getAllCardByCustomerId(Customer customerId){
-		return cardCustomerRepository.getCardCustomerByCustomerId(customerId);
+	public List<CardCustomer> getAllCardByCustomer(Customer customer){
+		return cardCustomerRepository.getCardCustomerByCustomer(customer);
 	}
 	
 	public CardCustomer setCardCustomer(CardCustomer card) {
 		return cardCustomerRepository.save(card);
 	}
 	
-	public boolean deleteCardCustomer(Customer customerId, CardCustomer id) {
-		List<CardCustomer> card = cardCustomerRepository.getCardCustomerByCustomerId(customerId); 
-		if(card.contains(id)) {
-			cardCustomerRepository.delete(id);
+	public boolean deleteCardCustomer(Customer customer, CardCustomer cardCustomer) {
+		List<CardCustomer> card = cardCustomerRepository.getCardCustomerByCustomer(customer); 
+		if(card.contains(cardCustomer)) {
+			cardCustomerRepository.delete(cardCustomer);
 			return true;
 		}
 		return false;

@@ -16,16 +16,16 @@ public class PurchaseOrderService {
 	@Autowired
 	private PurchaseOrderRepository purchaseOrderRepository;
 	
-	public List<PurchaseOrder> getAllPurchaseOrderByCustomerId (Customer customerId){
-		return purchaseOrderRepository.getAllPurchaseOrderByCustomerId(customerId);
+	public List<PurchaseOrder> getAllPurchaseOrderByCustomer (Customer customer){
+		return purchaseOrderRepository.getAllPurchaseOrderByCustomer(customer);
 	}
 	
-	public Optional<PurchaseOrder> getOnePurchaseOrderCustomerId(Customer customerId, PurchaseOrder id){
-		List<PurchaseOrder> purchaseOrder = getAllPurchaseOrderByCustomerId(customerId);
+	public Optional<PurchaseOrder> getOnePurchaseOrderByCustomer(Customer customer, PurchaseOrder purchaseOrder){
+		List<PurchaseOrder> allPurchaseOrder = getAllPurchaseOrderByCustomer(customer);
 		
-		if(purchaseOrder.contains(id)) {
-			int index = purchaseOrder.indexOf(id);
-			return Optional.of(purchaseOrder.get(index));
+		if(allPurchaseOrder.contains(purchaseOrder)) {
+			int index = allPurchaseOrder.indexOf(purchaseOrder);
+			return Optional.of(allPurchaseOrder.get(index));
 		}
 		return Optional.empty();
 	}

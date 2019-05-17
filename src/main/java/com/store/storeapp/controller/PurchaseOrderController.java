@@ -26,15 +26,15 @@ public class PurchaseOrderController {
 	@Autowired
 	private Utils utilM;
 	
-	@GetMapping("/order/{customerId}")
-	public ResponseEntity<List<?>> getAllPurchaseOrderByCustomerId(@PathVariable Customer customerId){
-		List<PurchaseOrder> order = purchaseOrderService.getAllPurchaseOrderByCustomerId(customerId);
+	@GetMapping("/order/{customer}")
+	public ResponseEntity<List<?>> getAllPurchaseOrderByCustomer(@PathVariable Customer customer){
+		List<PurchaseOrder> order = purchaseOrderService.getAllPurchaseOrderByCustomer(customer);
 		return utilM.getAll(order);
 	}
 	
-	@GetMapping("/order/{customerId}/{id}")
-	public ResponseEntity<Optional<?>> getOnePurchaseOrderByCustomerId (@PathVariable Customer customerId, @PathVariable PurchaseOrder id){
-		Optional<PurchaseOrder> order = purchaseOrderService.getOnePurchaseOrderCustomerId(customerId, id);
+	@GetMapping("/order/{customer}/{purchasOrder}")
+	public ResponseEntity<Optional<?>> getOnePurchaseOrderByCustomerId (@PathVariable Customer customer, @PathVariable PurchaseOrder purchaseOrder){
+		Optional<PurchaseOrder> order = purchaseOrderService.getOnePurchaseOrderByCustomer(customer, purchaseOrder);
 		return utilM.getOne(order);
 	}
 	

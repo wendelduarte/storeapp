@@ -1,8 +1,8 @@
 package com.store.storeapp.models;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,11 +18,11 @@ public class ProductType {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long productTypeId;
 	
-	@OneToMany
-	private List<Product> product;
-	
 	@NonNull
 	private String productType;
+	
+	@OneToMany(cascade=CascadeType.ALL, mappedBy = "productType")
+	private Set<Product> product;
 	
 	//constructor
 	public ProductType() {}
@@ -34,14 +34,6 @@ public class ProductType {
 
 	public void setProductTypeId(long productTypeId) {
 		this.productTypeId = productTypeId;
-	}
-
-	public List<Product> getProduct() {
-		return product;
-	}
-
-	public void setProduct(ArrayList<Product> product) {
-		this.product = product;
 	}
 
 	public String getProductType() {

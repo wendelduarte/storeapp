@@ -13,6 +13,6 @@ import com.store.storeapp.models.DeliveryAddressCustomer;
 @Repository
 public interface DeliveryAddressCustomerRepository extends JpaRepository <DeliveryAddressCustomer, Long>{
 	
-	@Query("SELECT a from DeliveryAddressCustomer a where a.customerId = :customerId")
-	List<DeliveryAddressCustomer> getDeliveryAddresByCustomerId(@Param("customerId") Customer customerId);
+	@Query("SELECT a from DeliveryAddressCustomer a where a.customer = :customer")
+	List<DeliveryAddressCustomer> getDeliveryAddresByCustomer(@Param("customer") Customer customer);
 }

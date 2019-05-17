@@ -35,10 +35,10 @@ public class StatusOrderService {
 		return null;
 	}
 	
-	public boolean deleteStatus(StatusOrder id) {
+	public boolean deleteStatus(StatusOrder statusOrder) {
 		List<StatusOrder> status = getAllStatus();
-		if(status.contains(id)) {
-			statusOrderRepository.delete(id);
+		if(status.contains(statusOrder)) {
+			statusOrderRepository.delete(statusOrder);
 			return true;
 		}
 		return false;

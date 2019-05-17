@@ -1,17 +1,20 @@
 package com.store.storeapp.models;
 
-import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import org.springframework.lang.NonNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Product {
@@ -20,15 +23,12 @@ public class Product {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long productId;
 	
-	@NonNull
+	@OneToMany(cascade=CascadeType.ALL, mappedBy = "product")
+	private Set<ProductOrder> productOrder;
+	
 	@ManyToOne
+	@JoinColumn(name="PRODUCT_TYPE_FK")
 	private ProductType productType;
-	
-	@OneToMany
-	private List<ProductOrder> productOrder;
-	
-	@ManyToMany
-	private List<Provider> provider;
 	
 	@NonNull
 	@Column(length=30)
@@ -45,21 +45,30 @@ public class Product {
 	
 	//construct
 	public Product() {}
-	
-	
 
-	public Product(long productId, ProductType productType, List<ProductOrder> productOrder,
+	public Product(long productId, Set<ProductOrder> productOrder, ProductType productType,
 			String name, String brand, Float price, String description) {
 		super();
 		this.productId = productId;
-		this.productType = productType;
 		this.productOrder = productOrder;
+		this.productType = productType;
 		this.name = name;
 		this.brand = brand;
 		this.price = price;
 		this.description = description;
 	}
 
+
+
+
+	public Set<ProductOrder> getProductOrder() {
+		return productOrder;
+	}
+
+
+	public void setProductOrder(Set<ProductOrder> productOrder) {
+		this.productOrder = productOrder;
+	}
 
 
 	public Product(long productId) {
@@ -74,28 +83,14 @@ public class Product {
 	public void setProductId(long productId) {
 		this.productId = productId;
 	}
-	
+
+	@JsonIgnore
 	public ProductType getProductType() {
 		return productType;
 	}
+
 	public void setProductType(ProductType productType) {
 		this.productType = productType;
-	}
-	
-	public List<ProductOrder> getProductOrder() {
-		return productOrder;
-	}
-
-	public void setProductOrder(List<ProductOrder> productOrder) {
-		this.productOrder = productOrder;
-	}
-	
-	public List<Provider> getProvider() {
-		return provider;
-	}
-	
-	public void setProvider(List<Provider> provider) {
-		this.provider = provider;
 	}
 
 	public void setPrice(Float price) {

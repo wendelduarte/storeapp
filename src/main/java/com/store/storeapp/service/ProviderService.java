@@ -36,10 +36,10 @@ public class ProviderService {
 		}
 	} 
 	
-	public boolean deleteProvider(Provider id) {
-		List<Provider> provider = getAllProvider();
-		if(provider.contains(id)) {
-			providerRepository.delete(id);
+	public boolean deleteProvider(Provider provider) {
+		List<Provider> allProvider = getAllProvider();
+		if(allProvider.contains(provider)) {
+			providerRepository.delete(provider);
 			return true;
 		} else {
 			return false;

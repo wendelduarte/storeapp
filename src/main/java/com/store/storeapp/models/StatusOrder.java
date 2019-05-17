@@ -1,10 +1,13 @@
 package com.store.storeapp.models;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 
 import org.springframework.lang.NonNull;
 
@@ -15,16 +18,17 @@ public class StatusOrder {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long statusId;
 	
-	@OneToOne
-	private PurchaseOrder order;
-	
+
 	@NonNull
 	private String orderStatus;
+
+	@OneToMany(cascade=CascadeType.ALL, mappedBy = "orderStatus")
+	private Set<PurchaseOrder> purchaseOrder;
+
 	
 	public StatusOrder() {
 		this.orderStatus="Aguardando pagamento";
 	}
-
 
 	public long getStatusId() {
 		return statusId;
@@ -34,14 +38,6 @@ public class StatusOrder {
 		this.statusId = statusId;
 	}
 
-	public PurchaseOrder getOrder() {
-		return order;
-	}
-
-	public void setOrder(PurchaseOrder order) {
-		this.order = order;
-	}
-
 	public String getOrderStatus() {
 		return orderStatus;
 	}
@@ -49,6 +45,12 @@ public class StatusOrder {
 	public void setOrderStatus(String orderStatus) {
 		this.orderStatus = orderStatus;
 	}
-	
-	
+
+	public Set<PurchaseOrder> getPurchaseOrder() {
+		return purchaseOrder;
+	}
+
+	public void setPurchaseOrder(Set<PurchaseOrder> purchaseOrder) {
+		this.purchaseOrder = purchaseOrder;
+	}	
 }

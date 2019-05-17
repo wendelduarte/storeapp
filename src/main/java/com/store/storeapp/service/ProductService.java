@@ -55,14 +55,7 @@ public class ProductService {
 	
 	//deleta
 	public boolean deleteProduct(Long id) {
-		/*
-		// deleter product order 
-		id.getProductOrder();
-		erepo.delete
-		*/
 		if(getOneProduct(id) != null) {
-			
-			
 			productRepository.deleteById(id);
 			return true;
 		}

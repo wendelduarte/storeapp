@@ -47,9 +47,9 @@ public class ProductOrderController {
 	}
 	
 	@DeleteMapping("/productorder/{id}")
-	public ResponseEntity<?> deleteProductOrder(@PathVariable ProductOrder id){
-		boolean productOrder = productOrderService.deleteProductOrder(id); 
-		return utilM.delete(productOrder);
+	public ResponseEntity<?> deleteProductOrder(@PathVariable ProductOrder productOrder){
+		boolean value = productOrderService.deleteProductOrder(productOrder); 
+		return utilM.delete(value);
 	}
 
 	@GetMapping("/teste")

@@ -4,9 +4,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import org.springframework.lang.NonNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class ProductOrder {
@@ -16,11 +19,12 @@ public class ProductOrder {
 		private Integer productOrderId;
 	
 		@ManyToOne
+		@JoinColumn(name="PURCHASE_ORDER_FK")
 		private PurchaseOrder purchaseOrder;
 		
-		@NonNull
 		@ManyToOne
-		private Product productId;
+		@JoinColumn(name="PRODUCT_FK")
+		private Product product;
 		
 		@NonNull
 		private int quantityProduct;
@@ -35,21 +39,22 @@ public class ProductOrder {
 		public void setProductOrderId(Integer productOrderId) {
 			this.productOrderId = productOrderId;
 		}
-
+		
+		@JsonIgnore
 		public PurchaseOrder getPurchaseOrder() {
 			return purchaseOrder;
 		}
 
-		public void setPurchaseOrder(PurchaseOrder purchaseOrder) {
-			this.purchaseOrder = purchaseOrder;
+		public void setPurhcaseOrder(PurchaseOrder purhcaseOrder) {
+			this.purchaseOrder = purhcaseOrder;
+		}
+		@JsonIgnore
+		public Product getProduct() {
+			return product;
 		}
 
-		public Product getProductId() {
-			return productId;
-		}
-
-		public void setProductId(Product productId) {
-			this.productId = productId;
+		public void setProduct(Product prodcut) {
+			this.product = prodcut;
 		}
 
 		public int getQuantityProduct() {

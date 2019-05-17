@@ -1,9 +1,9 @@
-package com.store.storeapp.models;
+	package com.store.storeapp.models;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,15 +19,6 @@ public class Customer {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long customerId;
-	
-	@OneToMany
-	private List<DeliveryAddressCustomer> address;
-	
-	@OneToMany
-	private List<CardCustomer> creditCard;
-	
-	@OneToMany
-	private List<PurchaseOrder> purchase;
 	
 	@NonNull
 	@Column(length=30)
@@ -54,6 +45,15 @@ public class Customer {
 	@NonNull
 	private String bilingAddres;
 	
+	@OneToMany(cascade=CascadeType.ALL, mappedBy = "customer")
+	private Set<CardCustomer> cardCustomer;
+	
+	@OneToMany(cascade=CascadeType.ALL, mappedBy = "customer")
+	private Set<DeliveryAddressCustomer> customerAddress;
+	
+	@OneToMany(cascade=CascadeType.ALL, mappedBy = "customer")
+	private Set<PurchaseOrder> purchaseOrder;
+	
 	//construct
 	public Customer() {}
 	
@@ -63,28 +63,6 @@ public class Customer {
 	}
 	public void setCustomerId(long customerId) {
 		this.customerId=customerId;
-	}
-	
-	public List<DeliveryAddressCustomer> getAddress(){
-		return address;
-	}
-	public void setAddress(List<DeliveryAddressCustomer> address){
-		this.address=address;
-	
-	}
-	public List<CardCustomer> getCreditCard() {
-		return creditCard;
-	}
-	public void setCreditCard(List<CardCustomer> creditCard) {
-		this.creditCard = creditCard;
-	}
-	
-	public List<PurchaseOrder> getPurchase(){
-		return purchase;
-	}
-	
-	public void setPurchase(ArrayList<PurchaseOrder> purchase) {
-		this.purchase = purchase;
 	}
 	
 	public String getName() {
@@ -136,4 +114,29 @@ public class Customer {
 	public void setBilingAddres(String bilingAddres) {
 		this.bilingAddres = bilingAddres;
 	}
+
+	public Set<CardCustomer> getCardCustomer() {
+		return cardCustomer;
+	}
+
+	public void setCardCustomer(Set<CardCustomer> cardCustomer) {
+		this.cardCustomer = cardCustomer;
+	}
+
+	public Set<DeliveryAddressCustomer> getCustomerAddress() {
+		return customerAddress;
+	}
+
+	public void setCustomerAddress(Set<DeliveryAddressCustomer> customerAddress) {
+		this.customerAddress = customerAddress;
+	}
+
+	public Set<PurchaseOrder> getPurchaseOrder() {
+		return purchaseOrder;
+	}
+
+	public void setPurchaseOrder(Set<PurchaseOrder> purchaseOrder) {
+		this.purchaseOrder = purchaseOrder;
+	}
+	
 }

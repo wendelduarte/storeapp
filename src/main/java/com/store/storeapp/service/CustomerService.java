@@ -3,6 +3,8 @@ package com.store.storeapp.service;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,10 +37,11 @@ public class CustomerService {
 		return null;
 	}
 	
-	public boolean deleteCustomer(Customer id) {
-		List<Customer> customer = getAllCustomer();
-		if(customer.contains(id)) {
-			customerRepository.delete(id);
+	@Transactional
+	public boolean deleteCustomer(Long customerId) {
+		Optional<Customer> customer = getOneCustomer(customerId);
+		if(customer.isPresent()) {
+			customerRepository.deleteById(customerId);
 			return true;
 		}
 		return false;			

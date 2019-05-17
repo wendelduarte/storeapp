@@ -13,6 +13,6 @@ import com.store.storeapp.models.PurchaseOrder;
 @Repository
 public interface PurchaseOrderRepository extends JpaRepository<PurchaseOrder, Long>{
 	
-	@Query("SELECT p from PurchaseOrder p where customerId = :customerId")
-	List<PurchaseOrder> getAllPurchaseOrderByCustomerId(@Param("customerId") Customer customerId);
+	@Query("SELECT p from PurchaseOrder p where customer = :customer")
+	List<PurchaseOrder> getAllPurchaseOrderByCustomer(@Param("customer") Customer customer);
 }

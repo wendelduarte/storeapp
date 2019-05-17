@@ -13,6 +13,6 @@ import com.store.storeapp.models.Customer;
 @Repository
 public interface CardCustomerRepository extends JpaRepository<CardCustomer, Long>{
 
-	@Query("SELECT c from CardCustomer c where c.customerId = :customerId")
-	List<CardCustomer> getCardCustomerByCustomerId(@Param("customerId") Customer customerId);
+	@Query("SELECT c from CardCustomer c where c.customer = :customer")
+	List<CardCustomer> getCardCustomerByCustomer(@Param("customer") Customer customer);
 }

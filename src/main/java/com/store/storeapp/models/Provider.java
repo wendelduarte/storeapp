@@ -2,11 +2,14 @@ package com.store.storeapp.models;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 import org.springframework.lang.NonNull;
@@ -18,8 +21,10 @@ public class Provider {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long providerId;
 	
-	@ManyToMany
+	@ManyToMany(cascade=CascadeType.ALL)
+	@JoinTable(name = "Provider_Product", joinColumns = { @JoinColumn(name = "providerId")}, inverseJoinColumns = { @JoinColumn(name = "productId")})
 	private List<Product> product;
+	
 	@NonNull
 	@Column(length=50)
 	private String businessName;
