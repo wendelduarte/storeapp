@@ -7,8 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
-import org.springframework.lang.NonNull;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -24,18 +23,19 @@ public class DeliveryAddressCustomer {
 	@JoinColumn(name="CUSTOMER_FK")
 	private Customer customer;
 	
-	@NonNull
+	@NotNull
 	@Column(length=100)
 	private String customerAddress;
 	
+	@NotNull
 	@Column(length=20)
 	private String customerCity;
 	
-	@NonNull
+	@NotNull
 	@Column(length=2)
 	private String customerState;
 	
-	@NonNull
+	@NotNull
 	private long cepCustomer;
 	
 	private String complementAddressCustomer;

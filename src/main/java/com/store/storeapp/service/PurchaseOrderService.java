@@ -17,6 +17,7 @@ public class PurchaseOrderService {
 	private PurchaseOrderRepository purchaseOrderRepository;
 	
 	public List<PurchaseOrder> getAllPurchaseOrderByCustomer (Customer customer){
+		purchaseOrderRepository.totalPrice(customer);
 		return purchaseOrderRepository.getAllPurchaseOrderByCustomer(customer);
 	}
 	

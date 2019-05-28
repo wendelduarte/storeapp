@@ -35,17 +35,11 @@ public class ProductOrderService {
 		return null;
 	}
 	
-	public boolean deleteProductOrder(ProductOrder productOrder) {
-		List<ProductOrder> allProductOrder = getAllProductOrder();
-		if(allProductOrder.contains(productOrder)) {
-			productOrderRepository.delete(productOrder);
+	public boolean deleteProductOrder(Long productOrderId) {
+		if(getOneProductOrder(productOrderId) != null) {
+			productOrderRepository.deleteById(productOrderId);
 			return true;
 		}
 		return false;
 	}
-
-	public float totalOfProduct() {
-		return productOrderRepository.totalOfProduct();
-	}
-
 }

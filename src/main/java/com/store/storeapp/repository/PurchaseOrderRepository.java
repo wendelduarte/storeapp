@@ -2,7 +2,10 @@ package com.store.storeapp.repository;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -15,4 +18,13 @@ public interface PurchaseOrderRepository extends JpaRepository<PurchaseOrder, Lo
 	
 	@Query("SELECT p from PurchaseOrder p where customer = :customer")
 	List<PurchaseOrder> getAllPurchaseOrderByCustomer(@Param("customer") Customer customer);
+
+	@Transactional
+	@Modifying
+	@Query("update PurchaseOrder po set total = (select sum(o.quantityProduct * p.price) "
+			+ "from ProductOrder o, Product p "
+			+ "where (o.product = p.productId) and (po.purchaseOrderId = o.purchaseOrder) "
+			+ "group by o.purchaseOrder) "
+			+ "where (po.customer = :customer)")
+	void totalPrice(@Param("customer") Customer customer);
 }

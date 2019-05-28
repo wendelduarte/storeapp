@@ -11,8 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-
-import org.springframework.lang.NonNull;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -23,28 +24,37 @@ public class PurchaseOrder {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long purchaseOrderId;
 	
-	@NonNull
 	@ManyToOne
 	@JoinColumn(name="STATUS_ORDER_FK")
 	private StatusOrder orderStatus;
 	
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name="CUSTOMER_FK")
 	private Customer customer;
 
+	@NotNull
 	@OneToMany(cascade=CascadeType.ALL, mappedBy = "purchaseOrder")
 	private Set<ProductOrder> productOrder;	
 	
-	@NonNull
+	@Temporal(TemporalType.DATE)     
 	private Date orderDate;
 	
-	@NonNull
 	private String formPayment;
 	
-	private float total;
+	
+	private Float total;
 
 	//construct
 	public PurchaseOrder() {}
+	
+	public PurchaseOrder(long purchaseOrderId,float total) {
+		super();
+		this.purchaseOrderId = purchaseOrderId;
+		this.total = total;
+	}
+
+
 
 	//get and set
 	public long getPurchaseOrderId() {

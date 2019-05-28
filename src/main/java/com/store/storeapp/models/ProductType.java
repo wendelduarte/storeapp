@@ -8,8 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-
-import org.springframework.lang.NonNull;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class ProductType {
@@ -18,7 +17,7 @@ public class ProductType {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long productTypeId;
 	
-	@NonNull
+	@NotNull
 	private String productType;
 	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy = "productType")

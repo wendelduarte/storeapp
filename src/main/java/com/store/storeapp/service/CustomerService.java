@@ -46,4 +46,13 @@ public class CustomerService {
 		}
 		return false;			
 	}
+	
+	public String getPasswordByEmail(String email) {
+		Customer customer = customerRepository.findByEmail(email);
+		return customer.getPassword();
+	}
+	
+	public Customer findByEmail(String email) {
+		return customerRepository.findByEmail(email);
+	}
 }

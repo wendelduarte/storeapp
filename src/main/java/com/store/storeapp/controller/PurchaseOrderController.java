@@ -32,8 +32,8 @@ public class PurchaseOrderController {
 		return utilM.getAll(order);
 	}
 	
-	@GetMapping("/order/{customer}/{purchasOrder}")
-	public ResponseEntity<Optional<?>> getOnePurchaseOrderByCustomerId (@PathVariable Customer customer, @PathVariable PurchaseOrder purchaseOrder){
+	@GetMapping("/order/{customer}/{purchaseOrder}")
+	public ResponseEntity<Optional<?>> getOnePurchaseOrderByCustomer (@PathVariable Customer customer, @PathVariable PurchaseOrder purchaseOrder){
 		Optional<PurchaseOrder> order = purchaseOrderService.getOnePurchaseOrderByCustomer(customer, purchaseOrder);
 		return utilM.getOne(order);
 	}

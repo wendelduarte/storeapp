@@ -6,8 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
-import org.springframework.lang.NonNull;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -16,7 +15,7 @@ public class ProductOrder {
 
 		@Id
 		@GeneratedValue(strategy=GenerationType.IDENTITY)
-		private Integer productOrderId;
+		private Long productOrderId;
 	
 		@ManyToOne
 		@JoinColumn(name="PURCHASE_ORDER_FK")
@@ -26,17 +25,29 @@ public class ProductOrder {
 		@JoinColumn(name="PRODUCT_FK")
 		private Product product;
 		
-		@NonNull
+		@NotNull
 		private int quantityProduct;
 		
 		//construct
 		public ProductOrder(){}
+		
+		
 
-		public Integer getProductOrderId() {
+		public ProductOrder(Long productOrderId, PurchaseOrder purchaseOrder, Product product, int quantityProduct) {
+			super();
+			this.productOrderId = productOrderId;
+			this.purchaseOrder = purchaseOrder;
+			this.product = product;
+			this.quantityProduct = quantityProduct;
+		}
+
+
+
+		public Long getProductOrderId() {
 			return productOrderId;
 		}
 
-		public void setProductOrderId(Integer productOrderId) {
+		public void setProductOrderId(Long productOrderId) {
 			this.productOrderId = productOrderId;
 		}
 		

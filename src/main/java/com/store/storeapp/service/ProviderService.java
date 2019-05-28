@@ -45,4 +45,13 @@ public class ProviderService {
 			return false;
 		}
 	}
+	
+	public String getPasswordByEmail(String email) {
+		Provider provider = providerRepository.findByEmail(email);
+		return provider.getPassword();
+	}
+	
+	public Provider findByEmail(String email) {
+		return providerRepository.findByEmail(email);
+	}
 }

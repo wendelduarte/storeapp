@@ -9,12 +9,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-
-import org.springframework.lang.NonNull;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Product {
@@ -26,19 +24,24 @@ public class Product {
 	@OneToMany(cascade=CascadeType.ALL, mappedBy = "product")
 	private Set<ProductOrder> productOrder;
 	
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name="PRODUCT_TYPE_FK")
 	private ProductType productType;
 	
-	@NonNull
+	@ManyToMany(mappedBy = "product")
+	private Set<Provider> provider;
+	
+	@NotNull
 	@Column(length=30)
 	private String name;
 	
-	@NonNull
+
+	@NotNull
 	@Column(length=30)
 	private String brand;
 	
-	@NonNull
+	@NotNull
 	private Float price;
 	
 	private String description;
@@ -58,6 +61,13 @@ public class Product {
 		this.description = description;
 	}
 
+	public Set<Provider> getProvider() {
+		return provider;
+	}
+
+	public void setProvider(Set<Provider> provider) {
+		this.provider = provider;
+	}
 
 
 
@@ -84,7 +94,7 @@ public class Product {
 		this.productId = productId;
 	}
 
-	@JsonIgnore
+
 	public ProductType getProductType() {
 		return productType;
 	}

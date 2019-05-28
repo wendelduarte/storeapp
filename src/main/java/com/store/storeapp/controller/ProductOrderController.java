@@ -46,14 +46,9 @@ public class ProductOrderController {
 		return utilM.update(productOrder);
 	}
 	
-	@DeleteMapping("/productorder/{id}")
-	public ResponseEntity<?> deleteProductOrder(@PathVariable ProductOrder productOrder){
-		boolean value = productOrderService.deleteProductOrder(productOrder); 
+	@DeleteMapping("/productorder/{productOrderId}")
+	public ResponseEntity<?> deleteProductOrder(@PathVariable Long productOrderId){
+		boolean value = productOrderService.deleteProductOrder(productOrderId); 
 		return utilM.delete(value);
-	}
-
-	@GetMapping("/teste")
-	public float totalOfProduct() {
-		return productOrderService.totalOfProduct();
-	}
+	}	
 }

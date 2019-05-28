@@ -26,7 +26,7 @@ public class CardCustomerController {
 	@Autowired
 	private Utils utilM;
 	
-	@GetMapping("/card/{customerId}")
+	@GetMapping("/card/{customer}")
 	public ResponseEntity<List<?>> getAllCardOfCustomer(@PathVariable Customer customer){
 		List<CardCustomer> allCardOfCustomer = cardCustomerService.getAllCardByCustomer(customer);
 		return utilM.getAll(allCardOfCustomer);

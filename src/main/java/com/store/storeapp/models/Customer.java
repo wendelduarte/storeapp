@@ -10,8 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 
-import org.springframework.lang.NonNull;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Customer {
@@ -20,29 +21,27 @@ public class Customer {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long customerId;
 	
-	@NonNull
+	@NotNull
 	@Column(length=30)
 	private String name;
 	
-	@NonNull
+	@NotNull
 	@Column(length=30)
 	private String email;
 	
-	@NonNull
+	@NotNull
 	private String password;
 	
-	@NonNull
+	@NotNull
 	private long cpfCustomer;
 	
-	@NonNull
 	private Date dateBirthCustomer;
 	
 	private Long telCustomer;
 	
-	@NonNull
 	private long celCustomer;
 	
-	@NonNull
+	@NotNull
 	private String bilingAddres;
 	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy = "customer")
@@ -131,6 +130,7 @@ public class Customer {
 		this.customerAddress = customerAddress;
 	}
 
+	@JsonIgnore
 	public Set<PurchaseOrder> getPurchaseOrder() {
 		return purchaseOrder;
 	}

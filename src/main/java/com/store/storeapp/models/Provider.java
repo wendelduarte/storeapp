@@ -1,6 +1,6 @@
 package com.store.storeapp.models;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,8 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.validation.constraints.NotNull;
 
-import org.springframework.lang.NonNull;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Provider {
@@ -23,39 +24,40 @@ public class Provider {
 	
 	@ManyToMany(cascade=CascadeType.ALL)
 	@JoinTable(name = "Provider_Product", joinColumns = { @JoinColumn(name = "providerId")}, inverseJoinColumns = { @JoinColumn(name = "productId")})
-	private List<Product> product;
+	private Set<Product> product;
 	
-	@NonNull
+	@NotNull
 	@Column(length=50)
 	private String businessName;
 	
-	@NonNull
+	@NotNull
 	@Column(length=20)
 	private String tradeName;
 	
-	@NonNull
+	@NotNull
 	private long cnpj;
+	
 	private long ie;
 	
-	@NonNull
+	@NotNull
 	private String providerAddress;
 	
-	@NonNull
 	private String providerCity;
 	
-	@NonNull
+	@NotNull
 	@Column(length=2)
 	private String providerState;
 	
-	@NonNull
+	@NotNull
 	private String email;
 	
-	@NonNull
+	@NotNull
 	private String password;
 	
+	@NotNull
 	private long telProvider;
 	
-	@NonNull
+	@NotNull
 	private String contactName;
 		
 	//construct
@@ -69,12 +71,12 @@ public class Provider {
 	public void setProviderId(long providerId) {
 		this.providerId = providerId;
 	}
-	
-	public List<Product> getProduct() {
+	@JsonIgnore
+	public Set<Product> getProduct() {
 		return product;
 	}
 
-	public void setProduct(List<Product> product) {
+	public void setProduct(Set<Product> product) {
 		this.product = product;
 	}
 

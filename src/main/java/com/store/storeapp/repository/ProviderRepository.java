@@ -8,4 +8,5 @@ import com.store.storeapp.models.Provider;
 @Repository
 public interface ProviderRepository extends JpaRepository<Provider, Long>{
 
+	public Provider findByEmail(String email);
 }

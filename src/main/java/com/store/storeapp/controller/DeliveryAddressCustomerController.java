@@ -55,7 +55,7 @@ public class DeliveryAddressCustomerController {
 		return utilM.update(address);
 	}
 	
-	@DeleteMapping("/address/{customer}/{deliveryCUstomer}")
+	@DeleteMapping("/address/{customer}/{deliveryCustomer}")
 	public ResponseEntity<?> deleteDeliveryAddres(@PathVariable Customer customer, @PathVariable DeliveryAddressCustomer deliveryCustomer){
 		boolean address = dacService.deleteDeliveryAddres(customer, deliveryCustomer);
 		return utilM.delete(address);
