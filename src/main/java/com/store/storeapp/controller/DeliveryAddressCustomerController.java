@@ -49,9 +49,9 @@ public class DeliveryAddressCustomerController {
 		return dacService.setDeliveryAddress(deliveryAddress);
 	}
 	
-	@PutMapping("/address/{customer}/{deliveryCustomer}")
-	public ResponseEntity<Optional<?>> updateAddress(@RequestBody DeliveryAddressCustomer updateDeliveryAddress, @PathVariable Customer customer, @PathVariable DeliveryAddressCustomer deliveryCustomer){
-		Optional<DeliveryAddressCustomer> address = dacService.updateDeliveryAddress(updateDeliveryAddress, customer, deliveryCustomer);
+	@PutMapping("/address/{customer}/{addressId}")
+	public ResponseEntity<Optional<?>> updateAddress(@PathVariable Long addressId, @PathVariable Customer customer, @RequestBody DeliveryAddressCustomer updateDeliveryAddress){
+		Optional<DeliveryAddressCustomer> address = dacService.updateDeliveryAddress(addressId, customer, updateDeliveryAddress);
 		return utilM.update(address);
 	}
 	

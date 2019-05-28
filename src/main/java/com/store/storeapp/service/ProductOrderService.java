@@ -30,7 +30,12 @@ public class ProductOrderService {
 	public Optional<ProductOrder> updateProductOrder(ProductOrder updateProductOrder, Long id) {
 		Optional<ProductOrder> productOrder = getOneProductOrder(id);
 		if(productOrder.isPresent()) {
-			return productOrder = Optional.of(productOrderRepository.save(updateProductOrder));
+			return productOrderRepository.findById(id)
+					.map(record -> {
+						record.setQuantityProduct(updateProductOrder.getQuantityProduct());
+						ProductOrder updated = productOrderRepository.save(record);
+						return updated;
+					});
 		}
 		return null;
 	}

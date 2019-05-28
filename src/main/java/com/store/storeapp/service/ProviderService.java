@@ -30,11 +30,26 @@ public class ProviderService {
 	public Optional<Provider> updateProvider(Provider updateProvider, Long id) {
 		Optional<Provider> provider = getOneProvider(id);
 		if(provider.isPresent()) {
-			return provider = Optional.of(providerRepository.save(updateProvider));
-		} else {
-			return null;
+			return providerRepository.findById(id)
+					.map(record -> {
+						record.setBusinessName(updateProvider.getBusinessName());
+						record.setTradeName(updateProvider.getTradeName());
+						record.setCnpj(updateProvider.getCnpj());
+						record.setIe(updateProvider.getIe());
+						record.setProviderAddress(updateProvider.getProviderAddress());
+						record.setProviderCity(updateProvider.getProviderCity());
+						record.setProviderState(updateProvider.getProviderState());
+						record.setEmail(updateProvider.getEmail());
+						record.setPassword(updateProvider.getPassword());
+						record.setTelProvider(updateProvider.getTelProvider());
+						record.setContactName(updateProvider.getContactName());
+						Provider updated = providerRepository.save(record);
+						return updated;						
+					});
 		}
-	} 
+		return null;
+	}
+	 
 	
 	public boolean deleteProvider(Provider provider) {
 		List<Provider> allProvider = getAllProvider();

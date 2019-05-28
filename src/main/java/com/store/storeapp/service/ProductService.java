@@ -34,7 +34,16 @@ public class ProductService {
 	public Optional<Product> updateProduct(Product updateProduct, Long id) {
 		Optional<Product> product = getOneProduct(id);
 		if(product.isPresent()) {
-			return product = Optional.of(productRepository.save(updateProduct));
+			return productRepository.findById(id)
+					.map(record -> {
+						record.setProductType(updateProduct.getProductType());
+						record.setName(updateProduct.getName());
+						record.setBrand(updateProduct.getBrand());
+						record.setPrice(updateProduct.getPrice());
+						record.setDescription(updateProduct.getDescription());
+						Product updated = productRepository.save(record);
+						return updated;
+					});
 		}
 		return null;
 	}

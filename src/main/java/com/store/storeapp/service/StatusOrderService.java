@@ -30,7 +30,12 @@ public class StatusOrderService {
 	public Optional<StatusOrder> updateStatusOrder(StatusOrder updateStatus, Long id) {
 		Optional<StatusOrder> status = getOneStatus(id);
 		if(status.isPresent()) {
-			return status = Optional.of(statusOrderRepository.save(updateStatus));
+			return statusOrderRepository.findById(id)
+					.map(record -> {
+						record.setOrderStatus(updateStatus.getOrderStatus());
+						StatusOrder updated = statusOrderRepository.save(record);
+						return updated;
+					});
 		}
 		return null;
 	}

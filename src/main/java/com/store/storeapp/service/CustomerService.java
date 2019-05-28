@@ -32,7 +32,19 @@ public class CustomerService {
 	public Optional<Customer> updateCustomer(Customer updateCustomer, Long id) {
 		Optional<Customer> customer = getOneCustomer(id);
 		if(customer.isPresent()) {
-			return customer = Optional.of(customerRepository.save(updateCustomer));
+			return customerRepository.findById(id)
+					.map(record -> {
+						record.setName(updateCustomer.getName());
+						record.setEmail(updateCustomer.getEmail());
+						record.setPassword(updateCustomer.getPassword());
+						record.setCpfCustomer(updateCustomer.getCpfCustomer());
+						record.setDateBirthCustomer(updateCustomer.getDateBirthCustomer());
+						record.setTelCustomer(updateCustomer.getTelCustomer());
+						record.setCelCustomer(updateCustomer.getCelCustomer());
+						record.setBilingAddres(updateCustomer.getBilingAddres());
+						Customer update = customerRepository.save(record);
+						return update;
+					});
 		}
 		return null;
 	}

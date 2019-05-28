@@ -35,10 +35,19 @@ public class DeliveryAddressCustomerService {
 		return dacRepository.save(deliveryAddress);
 	}
 	
-	public Optional<DeliveryAddressCustomer> updateDeliveryAddress(DeliveryAddressCustomer updateDeliveryAddress, Customer customer,  DeliveryAddressCustomer deliveryCustomer) {
-		Optional<DeliveryAddressCustomer> address = getOneDeliveryAddressByCustomer(customer, deliveryCustomer);
+	public Optional<DeliveryAddressCustomer> updateDeliveryAddress(Long addressId, Customer customer,  DeliveryAddressCustomer deliveryCustomer) {
+		Optional<DeliveryAddressCustomer> address = dacRepository.findById(addressId);
 		if(address.isPresent()) {
-			return address = Optional.of(dacRepository.save(updateDeliveryAddress));
+			return dacRepository.findById(addressId)
+					.map(record -> {
+						record.setCustomerAddress(deliveryCustomer.getCustomerAddress());
+						record.setCustomerCity(deliveryCustomer.getCustomerCity());
+						record.setCustomerState(deliveryCustomer.getCustomerState());
+						record.setCepCustomer(deliveryCustomer.getCepCustomer());
+						record.setComplementAddressCustomer(deliveryCustomer.getComplementAddressCustomer());
+						DeliveryAddressCustomer updated = dacRepository.save(record);
+						return updated;
+					});
 		}
 		return null;
 	}
