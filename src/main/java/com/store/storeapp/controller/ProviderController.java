@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,31 +29,35 @@ public class ProviderController {
 	@Autowired
 	private Utils utilM;
 	
+	@CrossOrigin
 	@GetMapping("/provider")
 	public ResponseEntity<List<?>> getAllProviders(){
 		List<Provider> allProviders = providerService.getAllProvider();
 		return utilM.getAll(allProviders);		 
 	}
 	
+	@CrossOrigin
 	@GetMapping("/provider/{id}")
 	public ResponseEntity<Optional<?>> getOneProvider(@PathVariable Long id){
 		Optional<Provider> provider = providerService.getOneProvider(id);
 		return utilM.getOne(provider);
 	}
 	
+	@CrossOrigin
 	@ResponseStatus(HttpStatus.OK)
 	@PostMapping("/provider/post")
 	public void setProvider (@RequestBody Provider provider) {
 		providerService.setProvider(provider);
 	}
 	
-	
+	@CrossOrigin
 	@PutMapping("/provider/{id}")
 	public ResponseEntity<Optional<?>> updateProvider(@RequestBody Provider update, @PathVariable Long id) {
 		Optional<Provider> provider= providerService.updateProvider(update, id);
 		return utilM.update(provider);
 	}
 	
+	@CrossOrigin
 	@DeleteMapping("/provider/{provider}")
 	public ResponseEntity<?> deleteProvider(@PathVariable Provider provider) {
 		boolean value = providerService.deleteProvider(provider);

@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.store.storeapp.models.Product;
+import com.store.storeapp.models.ProductType;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long>{
@@ -20,4 +21,10 @@ public interface ProductRepository extends JpaRepository<Product, Long>{
 	
     @Query("SELECT p FROM Product p WHERE " + "LOWER(p.name) LIKE LOWER(CONCAT('%',:name, '%')) order by name")
 	List<Product> getByName (@Param("name") String name);
+    
+    @Query("SELECT p FROM Product p WHERE (p.productType = :productType)")
+    List<Product> typeProduct(@Param("productType") ProductType productType);
+    
+    @Query("SELECT p FROM Product p WHERE (p.productType = :productType) and LOWER(p.name) LIKE LOWER(CONCAT('%',:name, '%')) order by name")
+    List<Product> findByTypeAndName(@Param("productType") ProductType productType, @Param("name") String name);
 }

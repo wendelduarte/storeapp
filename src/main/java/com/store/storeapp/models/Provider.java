@@ -13,7 +13,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Provider {
@@ -21,11 +20,7 @@ public class Provider {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long providerId;
-	
-	@ManyToMany(cascade=CascadeType.ALL)
-	@JoinTable(name = "Provider_Product", joinColumns = { @JoinColumn(name = "providerId")}, inverseJoinColumns = { @JoinColumn(name = "productId")})
-	private Set<Product> product;
-	
+		
 	@NotNull
 	@Column(length=50)
 	private String businessName;
@@ -35,18 +30,25 @@ public class Provider {
 	private String tradeName;
 	
 	@NotNull
-	private long cnpj;
+	private String cnpj;
 	
-	private long ie;
+	private String ie;
 	
-	@NotNull
-	private String providerAddress;
-	
-	private String providerCity;
 	
 	@NotNull
 	@Column(length=2)
 	private String providerState;
+	
+	@NotNull
+	private String providerAddress;
+	@NotNull
+	private String providerCity;
+	
+	@NotNull
+	private String contactName;
+	
+	@NotNull
+	private String telProvider;
 	
 	@NotNull
 	private String email;
@@ -54,11 +56,10 @@ public class Provider {
 	@NotNull
 	private String password;
 	
-	@NotNull
-	private long telProvider;
 	
-	@NotNull
-	private String contactName;
+	@ManyToMany(cascade=CascadeType.ALL)
+	@JoinTable(name = "Provider_Product", joinColumns = { @JoinColumn(name = "providerId")}, inverseJoinColumns = { @JoinColumn(name = "productId")})
+	private Set<Product> product;
 		
 	//construct
 	public Provider() {}
@@ -71,7 +72,7 @@ public class Provider {
 	public void setProviderId(long providerId) {
 		this.providerId = providerId;
 	}
-	@JsonIgnore
+
 	public Set<Product> getProduct() {
 		return product;
 	}
@@ -96,19 +97,19 @@ public class Provider {
 		this.tradeName = tradeName;
 	}
 
-	public long getCnpj() {
+	public String getCnpj() {
 		return cnpj;
 	}
 
-	public void setCnpj(long cnpj) {
+	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
 	}
 
-	public long getIe() {
+	public String getIe() {
 		return ie;
 	}
 
-	public void setIe(long ie) {
+	public void setIe(String ie) {
 		this.ie = ie;
 	}
 
@@ -152,11 +153,11 @@ public class Provider {
 		this.password = password;
 	}
 
-	public long getTelProvider() {
+	public String getTelProvider() {
 		return telProvider;
 	}
 
-	public void setTelProvider(long telProvider) {
+	public void setTelProvider(String telProvider) {
 		this.telProvider = telProvider;
 	}
 

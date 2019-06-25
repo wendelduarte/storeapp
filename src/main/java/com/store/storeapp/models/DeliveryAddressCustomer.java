@@ -7,9 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 public class DeliveryAddressCustomer {
@@ -23,20 +22,14 @@ public class DeliveryAddressCustomer {
 	@JoinColumn(name="CUSTOMER_FK")
 	private Customer customer;
 	
-	@NotNull
-	@Column(length=100)
-	private String customerAddress;
+	private String customerAddress;	
 	
-	@NotNull
-	@Column(length=20)
 	private String customerCity;
 	
-	@NotNull
 	@Column(length=2)
 	private String customerState;
 	
-	@NotNull
-	private long cepCustomer;
+	private String cepCustomer;
 	
 	private String complementAddressCustomer;
 	
@@ -52,7 +45,7 @@ public class DeliveryAddressCustomer {
 		this.deliveryAddressId = deliveryAddressId;
 	}
 	
-	@JsonIgnore
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY) 
 	public Customer getCustomer() {
 		return customer;
 	}
@@ -85,11 +78,11 @@ public class DeliveryAddressCustomer {
 		this.customerState = customerState;
 	}
 
-	public long getCepCustomer() {
+	public String getCepCustomer() {
 		return cepCustomer;
 	}
 
-	public void setCepCustomer(long cepCustomer) {
+	public void setCepCustomer(String cepCustomer) {
 		this.cepCustomer = cepCustomer;
 	}
 

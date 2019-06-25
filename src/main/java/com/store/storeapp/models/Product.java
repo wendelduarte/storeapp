@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Product {
 	
@@ -61,40 +63,24 @@ public class Product {
 		this.description = description;
 	}
 
-	public Set<Provider> getProvider() {
-		return provider;
+	public long getProductId() {
+		return productId;
 	}
 
-	public void setProvider(Set<Provider> provider) {
-		this.provider = provider;
+	public void setProductId(long productId) {
+		this.productId = productId;
 	}
 
-
-
+	
 	public Set<ProductOrder> getProductOrder() {
 		return productOrder;
 	}
-
 
 	public void setProductOrder(Set<ProductOrder> productOrder) {
 		this.productOrder = productOrder;
 	}
 
-
-	public Product(long productId) {
-		super();
-		this.productId = productId;
-	}
-
-	//getters and setters
-	public long getProductId() {
-		return productId;
-	}
-	public void setProductId(long productId) {
-		this.productId = productId;
-	}
-
-
+	
 	public ProductType getProductType() {
 		return productType;
 	}
@@ -103,17 +89,23 @@ public class Product {
 		this.productType = productType;
 	}
 
-	public void setPrice(Float price) {
-		this.price = price;
+	@JsonIgnore
+	public Set<Provider> getProvider() {
+		return provider;
+	}
+
+	public void setProvider(Set<Provider> provider) {
+		this.provider = provider;
 	}
 
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public String getBrand() {
 		return brand;
 	}
@@ -122,18 +114,21 @@ public class Product {
 		this.brand = brand;
 	}
 
-	public float getPrice() {
+	public Float getPrice() {
 		return price;
 	}
-	public void setPrice(float price) {
+
+	public void setPrice(Float price) {
 		this.price = price;
 	}
-	
+
 	public String getDescription() {
 		return description;
 	}
-	
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	
 }

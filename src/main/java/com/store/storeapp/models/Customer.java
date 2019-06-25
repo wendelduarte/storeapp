@@ -1,6 +1,5 @@
-	package com.store.storeapp.models;
+package com.store.storeapp.models;
 
-import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -26,22 +25,22 @@ public class Customer {
 	private String name;
 	
 	@NotNull
+	@Column(length=20)
+	private String cpfCustomer;
+	
+	private String dateBirthCustomer;
+	
+	private String telCustomer;
+	
+	private String celCustomer;	
+	
+	@NotNull
 	@Column(length=30)
 	private String email;
 	
 	@NotNull
 	private String password;
 	
-	@NotNull
-	private long cpfCustomer;
-	
-	private Date dateBirthCustomer;
-	
-	private Long telCustomer;
-	
-	private long celCustomer;
-	
-	@NotNull
 	private String bilingAddres;
 	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy = "customer")
@@ -83,28 +82,28 @@ public class Customer {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public long getCpfCustomer() {
+	public String getCpfCustomer() {
 		return cpfCustomer;
 	}
-	public void setCpfCustomer(long cpfCustomer) {
+	public void setCpfCustomer(String cpfCustomer) {
 		this.cpfCustomer = cpfCustomer;
 	}
-	public Date getDateBirthCustomer() {
+	public String getDateBirthCustomer() {
 		return dateBirthCustomer;
 	}
-	public void setDateBirthCustomer(Date dateBirthCustomer) {
+	public void setDateBirthCustomer(String dateBirthCustomer) {
 		this.dateBirthCustomer = dateBirthCustomer;
 	}
-	public Long getTelCustomer() {
+	public String getTelCustomer() {
 		return telCustomer;
 	}
-	public void setTelCustomer(Long telCustomer) {
+	public void setTelCustomer(String telCustomer) {
 		this.telCustomer = telCustomer;
 	}
-	public long getCelCustomer() {
+	public String getCelCustomer() {
 		return celCustomer;
 	}
-	public void setCelCustomer(long celCustomer) {
+	public void setCelCustomer(String celCustomer) {
 		this.celCustomer = celCustomer;
 	}
 	public String getBilingAddres() {
@@ -122,6 +121,7 @@ public class Customer {
 		this.cardCustomer = cardCustomer;
 	}
 
+	//@JsonIgnore
 	public Set<DeliveryAddressCustomer> getCustomerAddress() {
 		return customerAddress;
 	}

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.store.storeapp.models.Product;
+import com.store.storeapp.models.ProductType;
 import com.store.storeapp.repository.ProductRepository;
 
 @Service
@@ -58,6 +59,15 @@ public class ProductService {
 		return productRepository.getProductOrderByPriceDesc();
 	}
 	
+	//filtra pelo tipo de produto
+	public List<Product> filterType(ProductType type){
+		return productRepository.typeProduct(type);
+	}
+	
+	public List<Product> findByNameAndType(ProductType productType, String name){
+		return productRepository.findByTypeAndName(productType, name);
+	}
+	
 	public List<Product> searchProduct(String name){
 		return productRepository.getByName(name);
 	}
@@ -70,5 +80,4 @@ public class ProductService {
 		}
 		return false;
 	}
-
 }

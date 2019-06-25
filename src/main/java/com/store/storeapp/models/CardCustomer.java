@@ -1,7 +1,5 @@
 package com.store.storeapp.models;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,7 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 public class CardCustomer {
@@ -29,7 +27,7 @@ public class CardCustomer {
 	@NotNull
 	private long cardNumber;
 	
-	private Date expirationDate;
+	private String expirationDate;
 	
 	@NotNull
 	private String typeCard;
@@ -49,7 +47,7 @@ public class CardCustomer {
 		this.cardId = cardId;
 	}
 
-	@JsonIgnore
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY) 
 	public Customer getCustomer() {
 		return customer;
 	}
@@ -74,11 +72,11 @@ public class CardCustomer {
 		this.cardNumber = cardNumber;
 	}
 
-	public Date getExpirationDate() {
+	public String getExpirationDate() {
 		return expirationDate;
 	}
 
-	public void setExpirationDate(Date expirationDate) {
+	public void setExpirationDate(String expirationDate) {
 		this.expirationDate = expirationDate;
 	}
 
