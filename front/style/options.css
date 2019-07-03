@@ -1,0 +1,32 @@
+@charset "UTF-8";
+/*fundo */
+body {
+    background: url(../images/coding.jpeg) no-repeat center top fixed;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: white;
+}
+
+
+section ul{
+	margin: auto auto auto auto;
+}
+section ul li{
+	margin-right: 30px;
+}
+section{
+	margin-bottom: 10px;
+	text-align: center;
+	align-items: center;
+}
+
+footer.no-division{
+	clear: both;
+	border-top: 1px solid rgba(255,255,255,.2);
+}
+ul#cards-options div{
+	background-color: rgba(100,100,100,.5);
+}

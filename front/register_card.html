@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Bionexo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="icon" type="imagem/png" href="images/bio.png" />
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <link rel="stylesheet" type="text/css" href="style/form.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <script src="js/functions.js"></script>
+    <script src="js/nav_include.js"></script>
+    <script src="js/ajax.js"></script>
+    <script src="js/ajax_register.js"></script>
+
+  </head>
+  <body onload="includeNavBar()">
+
+    <nav id="menu-bar" class="navbar navbar-expand-md bionexo-color navbar-dark"></nav><br>
+
+    <div id="page" class="container">
+      <section id="principal">
+        
+        <form action="#">
+          <ul>
+            <li id="name" style="width: 35%">
+              <div class="form-group">
+                <label for="name-card">Nome do titular do cartão: *</label>
+                <input type="text" class="form-control" id="name-card" placeholder="Nome como está no cartão" name="name-card" required/>
+              </div>
+            </li>
+            <li id="number">
+              <div class="form-group">
+                <label for="card-number">Número do cartão: *</label>
+                <input type="text" class="form-control" id="card-number" placeholder="1111 1111 1111 1111" required/>
+              </div>
+            </li>
+            <li style="width: 20%">
+              <div class="form-group">
+                <label for="security-code">Código de segurança: *</label>
+                <input type="text" class="form-control" id="security-code" placeholder="111" required/>
+              </div>
+            </li>
+            <li id="expiration" style="width: 28%">
+              <div class="form-group">
+                <label for="expiration-date">Validade: *</label>
+                <input oninput="mask(this, 'cep')"type="month" class="form-control" id="expiration-date" required/>
+              </div>
+            </li>
+            <li style="width: 30%">
+              <div class="form-group">
+                <label for="type-card">Tipo do cartão: *</label>
+                  <select class="form-control"  id="type-card" required>
+                    <option value=""> </option>
+                    <option value="Visa">Visa</option>
+                    <option value="Cielo">Cielo</option>
+                    <option value="MasterCard">MasterCard</option>
+                    <option value="Elo">Elo</option>
+                  </select>
+              </div>
+            </li >
+          </ul>
+          <a style="color:white" class="btn btn-default color wrap floatRight" onclick="postCard()">Cadastrar</a>
+        </form>
+        <p style="color: #808080">Campos marcados com " * " são obrigatórios.</p>
+      </section>
+
+      <aside>
+        <div id="icon">
+          <img src="images/credit-card.png"/>
+        </div>
+      </aside>
+
+      <footer id="bionexo">
+        <p>Bionexo - 2019</p>
+      </footer>
+    </div>
+
+
+  </body>
+</html>
+
+

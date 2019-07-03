@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Bionexo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="icon" type="imagem/png" href="images/bio.png" />
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="js/ajax.js"></script>
+    <script src="js/nav_include.js"></script>
+    <script src="js/ajax_register.js"></script>
+
+
+  </head>
+  <body onload="loadInformationProvider(), includeNavBar(), loadProductByProvider()">
+
+    <nav id="menu-bar" class="navbar navbar-expand-md bionexo-color navbar-dark"></nav><br>
+
+    <div id="page" class="container">
+      <section id="principal">
+        <h3 id="provider-trade-name" style="flex-wrap: wrap"></h3>
+            <p id="provider-business-name"></p>
+            <p id="cnpj"></p>
+            <p id="ie"></p>
+            <p id="contact-name"></p>
+            <p id="tel-provider"></p>
+            <p id="e-mail"></p>
+            <p id="address-provider"></p>
+            <p style="color: #808080">As informações acima são visíveis a todos os compradores.</p>
+            <a href="update_provider.html"class="btn btn-default color floatRight">Alterar dados</a><br/><br/>
+            <p id="products"></p>
+      </section>
+
+      <aside>
+        <div id="warnings" >
+          <a href="" data-toggle="modal" data-target="#deleteProvider">Apagar minha conta</a><br/><br/>
+          <div class="modal fade" id="deleteProvider" role="dialog">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Quer mesmo apagar sua conta?</h4>
+                </div>
+                <div class="modal-body">
+                  <p>Está ação excluirá todos os seus dados, não pode ser desfeita</p><hr>
+                  <a data-dismiss="modal" href="">Cancelar</a>
+                  <a href="index.html" style="float: right;" onclick="deleteProvider()">Apagar</a>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        </div>
+      </aside>
+
+      <footer id="bionexo">
+        <p>Bionexo - 2019</p>
+      </footer>
+    </div>
+
+
+  </body>
+</html>
+
+

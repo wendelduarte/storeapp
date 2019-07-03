@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Bionexo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="icon" type="imagem/png" href="images/bio.png" />
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="js/ajax.js"></script>
+    <script src="js/nav_include.js"></script>
+  
+  </head>
+  <body onload="loadAllProducts(0), includeNavBar()">
+
+    <nav id="menu-bar" class="navbar navbar-expand-md bionexo-color navbar-dark"></nav><br>
+
+    <div id="page" class="container">
+      <section id="principal" style="min-width: 248px;">
+
+        <div id="section-content">
+          <div id="slides" class="carousel slide carousel-fade" data-ride="carousel">
+            <ul class="carousel-indicators">
+              <li data-target="#slides" data-slide-to="0" class="active"></li>
+              <li data-target="#slides" data-slide-to="1"></li>
+            </ul>
+            <div class="carousel-inner">
+              <div class="carousel-item active border-just">
+                <img src="images/medicamentos.png" alt="Medicamentos" width=100% height=100%>
+                <div class="carousel-caption">
+                  <h3>Medicamentos</h3>
+                </div>   
+              </div>
+              <div class="carousel-item">
+                <img src="images/sistema.png" alt="Bionexo" width=100% height=100%>
+                <div class="carousel-caption">
+                  <a href="https://bionexo.com/">Conheça nosso também nosso sistema de gestão hospitalar</a>
+                </div>   
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#slides" data-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#slides" data-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </a>
+          </div>
+        </div>
+        <ul id="cards" class="cards-options">
+      
+        </ul>
+      </section>
+
+      <aside id="filters" style="flex-wrap: wrap">
+        <ul>
+          <form id="text-box-for-search">
+          <li>
+            <input id ="search" type="search" class="form-control form-control-lg" placeholder="Digite o nome do produto" name="search">
+          </li>
+          <li>
+            <a id="searchButton" class="btn btn-default color" onclick="searchProducts()"><img src="images/lupa.png"></a>
+          </li>
+          </form>
+        </ul>
+        <fieldset id="type-product-filter" class="radio-filters">
+          <legend>Tipo do Produto</legend>
+          <input type="radio" id="medicamento" name="type-prooduct" onchange="filter(1)"/>
+          <label for="medicamento">Medica<wbr>mentos</label><br>
+          <input type="radio" id="material-medico" name="type-prooduct" onchange="filter(2)"/>
+          <label for="material-medico">Material Medico</label>
+        </fieldset>
+        <fieldset id="price-product-filter" class="radio-filters" >
+          <legend>Preço</legend>
+          <input type="radio" id="maior" name="price-prooduct" value="desc" onchange="filter(3)" />
+          <label for="maior">Maior Preço</label><br>
+          <input type="radio" id="menor" name="price-prooduct" value="asc" onchange="filter(4)"/>
+          <label for="menor">Menor preço</label>
+        </fieldset>
+      </aside>
+
+      <footer id="bionexo">
+        <p>Bionexo - 2019</p>
+      </footer>
+    </div>
+
+
+  </body>
+</html>

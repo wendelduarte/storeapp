@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+
+div.larg input{
+	width: 300px;
+	margin: auto auto auto auto;
+}
+
+figure{
+	margin-top: 10px;
+}

@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+.infos {
+    width: 48%;
+    padding-right: 1%;
+    border-right: 1px solid rgba(0,0,0,.2);
+    border-bottom: 1px solid rgba(0,0,0,.2);
+    margin: 0 2px;
+}
+
+#purchase-order {
+    display: flex;
+    flex-wrap: wrap;
+    /* width: 600px; */
+    max-width: 100%;
+}
+
+ul#order-list li{
+	min-width: 180px;
+}

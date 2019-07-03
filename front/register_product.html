@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Bionexo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="icon" type="imagem/png" href="images/bio.png" />
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <link rel="stylesheet" type="text/css" href="style/form.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <script src="js/functions.js"></script>
+    <script src="js/nav_include.js"></script>
+    <script src="js/ajax.js"></script>
+    <script src="js/ajax_register.js"></script>
+
+  </head>
+  <body onload="includeNavBar()">
+
+    <nav id="menu-bar" class="navbar navbar-expand-md bionexo-color navbar-dark"></nav><br>
+
+    <div id="page" class="container">
+      <section id="principal">
+        
+        <form action="#">
+          <ul>
+            <li style="width: 35%">
+              <div class="form-group">
+                <label for="name-product">Nome: *</label>
+                <input type="text" class="form-control" id="name-product" placeholder="Nome do produto"required/>
+              </div>
+            </li>
+            <li style="width: 35%">
+              <div class="form-group">
+                <label for="brand-product">Marca: *</label>
+                <input type="text" class="form-control" id="brand-product" placeholder="Digite a marca do produto" required/>
+              </div>
+            </li>
+            <li style="width: 20.1%">
+              <div class="form-group">
+                <label for="price-product">Preço: *</label>
+                <input type="text" class="form-control" id="price-product" placeholder="12.00" required/>
+              </div>
+            </li>
+            <li style="width: 25%">
+              <div class="form-group">
+                <label for="type-product">Tipo do produto: *</label>
+                  <select class="form-control"  id="type-product" required/>
+                    <option value=""> </option>
+                    <option value=1>Medicamento</option>
+                    <option value=2>Material Médico</option>
+                  </select>
+              </div>
+            </li >
+            <li style="width: 68.5%">
+              <div class="form-group">
+                <label for="description-product">Descrição: *</label>
+                <input type="text" class="form-control" id="description-product" placeholder="Comente sobre o produto" required/>
+              </div>
+            </li>
+          </ul>
+          <a class="btn btn-default color wrap floatRight" style="color: white" onclick="postProduct()">Cadastrar</a>
+        </form>
+        <p style="color: #808080">Campos marcados com " * " são obrigatórios.</p>
+      </section>
+
+      <aside>
+        <div id="icon">
+          <img src="images/remedio.png"/>
+        </div>
+      </aside>
+
+      <footer id="bionexo">
+        <p>Bionexo - 2019</p>
+      </footer>
+    </div>
+
+
+  </body>
+</html>
+
+

@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+section#principal{
+	width: 70%;
+	padding-right: 5px;
+}
+
+li{
+ margin-left: 20px;
+}
+
+button{
+	float: right;
+
+}
+
+footer{
+	align-items: center
+}
+
+div#icon{
+	float:left;
+	margin: 0% auto auto 10%;
+}
+div#icon img{
+	max-width: 100%;
+	height: auto;
+}
+
+div#icon-provider img{
+	max-width: 100%;
+	height: auto;
+	margin-left: 80px;
+	margin-top: 80px;
+}

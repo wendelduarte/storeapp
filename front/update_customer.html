@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Bionexo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="icon" type="imagem/png" href="images/bio.png" />
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <link rel="stylesheet" type="text/css" href="style/form.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <script src="js/functions.js"></script>
+    <script src="js/nav_include.js"></script>
+    <script src="js/ajax.js"></script>
+    <script src="js/ajax_register.js"></script>
+
+  </head>
+  <body onload="includeNavBar(), informationToUpdateCustomer()">
+
+    <nav id="menu-bar" class="navbar navbar-expand-md bionexo-color navbar-dark"></nav><br>
+
+    <div id="page" class="container">
+      <section id="principal">
+        <h4>Atualizar informações</h4>
+        <form action="#">
+          <ul>
+            <li id="name" style="width: 35%">
+              <div class="form-group">
+                <label for="name-customer">Nome: *</label>
+                <input type="text" class="form-control" id="name-customer" placeholder="Nome completo" name="name" required/>
+              </div>
+            </li>
+            <li id="cpf" style="width: 20%">
+              <div class="form-group">
+                <label for="cpf-customer">CPF: *</label>
+                <input oninput="mask(this, 'cpf')" type="text" class="form-control cpf" id="cpf-customer" placeholder="111.111.111-11" name="cpf" required/>
+              </div>
+            </li>
+            <li id="birth">
+              <div class="form-group">
+                <label for="birth-customer">Data de nascimento:</label>
+                <input type="date" class="form-control" id="birth-customer" name="date-birth">
+              </div>
+            </li>
+            <li id="tel" style="width: 20%">
+              <div class="form-group">
+                <label for="tel-customer">Telefone:</label>
+                <input oninput="mask(this, 'tel')"type="tel" class="form-control" id="tel-customer" placeholder="(99) 9999-9999" name="tel">
+              </div>
+            </li>
+            <li id="cel" style="width: 23%">
+              <div class="form-group">
+                <label for="cel-customer">Celular:</label>
+                <input oninput="mask(this, 'tel')" type="tel" class="form-control" id="cel-customer" placeholder="(99) 9 9999-9999" name="cel">
+              </div>
+            </li>
+            <li id="e-mail" style="width: 38.2%">
+              <div class="form-group" id="email">
+                <label for="email-customer">E-mail: *</label>
+                <input type="email" class="form-control" id="email-customer" placeholder="exemplo@exemplo.com" name="email" required/>
+              </div>
+            </li>
+            <li id="pass">
+              <div class="form-group">
+                <label for="pass-customer">Senha: *</label>
+                <input type="password" class="form-control" id="pass-customer" placeholder="Digite sua senha" name="pass" required/>
+              </div>
+            </li>
+          </ul>
+          <a class="btn btn-default color wrap floatRight" style="color: white" onclick="updateCustomer()">Salvar</a>
+        </form>
+        <p style="color: #808080">Campos marcados com " * " são obrigatórios.</p>
+      </section>
+
+      <aside>
+        <div id="icon">
+          <img src="images/customer-register.png"/>
+        </div>
+      </aside>
+
+      <footer id="bionexo">
+        <p>Bionexo - 2019</p>
+      </footer>
+    </div>
+
+
+  </body>
+</html>
+
+

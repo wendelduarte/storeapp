@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Bionexo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="icon" type="imagem/png" href="images/bio.png" />
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <link rel="stylesheet" type="text/css" href="style/form.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="js/functions.js"></script>
+    <script src="js/nav_include.js"></script>
+    <script src="js/ajax.js"></script>
+    <script src="js/ajax_register.js"></script>
+
+
+  </head>
+  <body onload="includeNavBar(), informationToUpdateProvider()">
+
+    <nav id="menu-bar" class="navbar navbar-expand-md bionexo-color navbar-dark"></nav><br>
+
+    <div id="page" class="container">
+      <section id="principal">
+        <h4>Atualizar informações</h4>
+        <form action="#">
+          <ul>
+            <li id="name-provider" style="width: 46%">
+              <div class="form-group">
+                <label for="bussiness-name-provider">Nome Comercial: *</label>
+                <input type="text" class="form-control" id="bussiness-name-provider" placeholder="Nome Empresarial" name="name" required/>
+              </div>
+            </li>
+            <li id="trade-name" style="width: 46%">
+              <div class="form-group">
+                <label for="trade-name-provider">Nome Fantasia: *</label>
+                <input type="text" class="form-control cpf" id="trade-name-provider" placeholder="Nome Fantasia" name="trade" required/>
+              </div>
+            </li>
+            <li id="cnpj" style="width: 30%">
+              <div class="form-group">
+                <label for="cnpj-provider">CNPJ: *</label>
+                <input oninput="mask(this, 'cnpj') "type="text" class="form-control" id="cnpj-provider" placeholder="11.111.111/0001-1" name="date-birth" required/>
+              </div>
+            </li>
+            <li id="ie" style="width: 25%">
+              <div class="form-group">
+                <label for="ie-provider">I.E.:</label>
+                <input type="text" class="form-control" id="ie-provider" placeholder="111.111.111.111" name="ie">
+              </div>
+            </li>
+            <li id="state" style="width: 33.6%">
+              <div class="form-group">
+                <label for="state-provider">Estado: *</label>
+                  <select class="form-control"  id="state-provider" name="state" required>
+                    <option value=""> </option>
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                    <option value="ES">Estrangeiro</option>
+                  </select>
+              </div>
+            </li>
+            <li id="address-prov" style="width: 61%">
+              <div class="form-group">
+                <label for="address-provider">Endereço: *</label>
+                <input type="text" class="form-control" id="address-provider" placeholder="Endereço completo incluindo complemento e bairro" name="address" required>
+              </div>
+            </li>
+            <li id="city">
+              <div class="form-group">
+                <label for="city-provider">Cidade: *</label>
+                <input type="text" class="form-control" id="city-provider" placeholder="Ex.: São Paulo" name="city-customer" required/>
+              </div>
+            </li>
+            <li id="name-contact-provider" style="width: 61%">
+              <div class="form-group">
+                <label for="name-contact">Nome Contato: *</label>
+                <input type="text" class="form-control" id="name-contact" placeholder="Nome completo" name="name" required/>
+              </div>
+            </li>
+            <li id="tel-providerr">
+              <div class="form-group">
+                <label for="tel-provider">Telefone: *</label>
+                <input oninput="mask(this, 'tel')" type="text" class="form-control" id="tel-provider" placeholder="(99) 9999-9999" name="tel" required/>
+              </div>
+            </li>
+            <li id="e-mail-provider">
+              <div class="form-group">
+                <label for="email-provider">E-mail: *</label>
+                <input type="email" class="form-control" id="email-provider" placeholder="exemplo@exemplo.com" name="email" required/>
+              </div>
+            </li>
+            <li id="pass">
+              <div class="form-group">
+                <label for="pass-customer">Senha: *</label>
+                <input type="password" class="form-control" id="pass-provider" placeholder="Digite sua senha" name="pass" required/>
+              </div>
+            </li>
+          </ul>
+          <a class="btn btn-default color wrap floatRight" style="color: white" onclick="updateProvider()">Salvar</a>
+        </form>
+        <p style="color: #808080">Campos marcados com " * " são obrigatórios.</p>
+      </section>
+
+      <aside>
+        <div id="icon-provider">
+          <img src="images/provider-register.png"/>
+        </div>
+      </aside>
+
+      <footer id="bionexo">
+        <p>Bionexo - 2019</p>
+      </footer>
+    </div>
+
+
+  </body>
+</html>
+
+

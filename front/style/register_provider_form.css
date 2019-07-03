@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+section#principal{
+	width: 70%;
+	padding-right: 5px;
+}
+
+li{
+ margin-left: 20px;
+}
+
+button{
+	float: right;
+
+}
+

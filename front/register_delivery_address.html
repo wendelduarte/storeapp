@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Bionexo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="icon" type="imagem/png" href="images/bio.png" />
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <link rel="stylesheet" type="text/css" href="style/form.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <script src="js/functions.js"></script>
+    <script src="js/nav_include.js"></script>
+    <script src="js/ajax.js"></script>
+    <script src="js/ajax_register.js"></script>
+
+  </head>
+  <body onload="includeNavBar()">
+
+    <nav id="menu-bar" class="navbar navbar-expand-md bionexo-color navbar-dark"></nav><br>
+
+    <div id="page" class="container">
+      <section id="principal">
+        
+        <form action="#">
+          <ul>
+            <li id="delivery-address" style="width: 60%">
+              <div class="form-group">
+                <label for="address">Endereço: *</label>
+                <input type="text" class="form-control" id="address" placeholder="Endereço completo incluindo número e bairro" name="address" required/>
+              </div>
+            </li>
+            <li id="state" style="width: 30%">
+              <div class="form-group">
+                <label for="state-customer">Estado: *</label>
+                  <select class="form-control"  id="state-customer" name="state" required>
+                    <option value=""> </option>
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                    <option value="ES">Estrangeiro</option>
+                  </select>
+              </div>
+            </li >
+            <li id="city">
+              <div class="form-group">
+                <label for="city-customer">Cidade: *</label>
+                <input type="text" class="form-control" id="city-customer" placeholder="Ex.: São Paulo" name="city-customer" required/>
+              </div>
+            </li>
+            <li id="cep" style="width: 26%">
+              <div class="form-group">
+                <label for="cep-customer">CEP: *</label>
+                <input oninput="mask(this, 'cep')"type="text" class="form-control" id="cep-customer" placeholder="04308-020" name="cep" required/>
+              </div>
+            </li>
+            <li id="complement" style="width: 29.5%">
+              <div class="form-group">
+                <label for="complement-customer">Complemento :</label>
+                <input type="text" class="form-control" id="complement-customer" placeholder="Apto 12" name="complement">
+              </div>
+            </li>
+          </ul>
+          <a style="color:white"class="btn btn-default color wrap floatRight" onclick="postDeliveryAddress()">Cadastrar</a>
+        </form>
+        <p style="color: #808080">Campos marcados com " * " são obrigatórios.</p>
+      </section>
+
+      <aside>
+        <div id="icon">
+          <img src="images/delivery.png"/>
+        </div>
+      </aside>
+
+      <footer id="bionexo">
+        <p>Bionexo - 2019</p>
+      </footer>
+    </div>
+
+
+  </body>
+</html>
+
+
