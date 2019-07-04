@@ -34,7 +34,7 @@ public class DeliveryAddressCustomer {
 	private String complementAddressCustomer;
 	
 	//construct
-	public DeliveryAddressCustomer() {}	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY) 
+	public DeliveryAddressCustomer() {}	 
 
 
 	//getters and setters
