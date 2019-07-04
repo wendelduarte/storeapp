@@ -1,3 +1,5 @@
+//Inclui o meu de navegação em todas as paginas, também verifica se tem alguém logado, se tiver ele vai verificar se é cliente ou fornecedor
+//Para o comprador a barra é de um jeito e para o fornecedor de outro.
 function includeNavBar(){
   var nav = '';
   if(sessionStorage.getItem('userId') != 'logout' && sessionStorage.getItem('custProv') == 1){
@@ -68,7 +70,7 @@ function includeNavBar(){
     document.getElementById("menu-bar").innerHTML = nav;    
 }
 
-//Login do cliente
+//Faz o login do comprador.
 function loginCustomer(){
   var email  = document.getElementById('email').value;
   var pass  = document.getElementById('pwd').value;
@@ -81,7 +83,7 @@ function loginCustomer(){
       var jsonObj = JSON.parse(http_request.responseText);
       cart();
       var id = JSON.stringify(jsonObj.customerId);
-      sessionStorage.setItem('userId', id);
+      sessionStorage.setItem('userId', id); //Guarda o id do cliente na sessão.
       sessionStorage.setItem('custProv', 1); //Guarda na sessão se é um customer ou um provider - 1 = customer, 2 = provider.
       window.location.href = "profile.html";
     }else if (http_request.readyState == 4 && http_request.status == 401){
@@ -95,7 +97,7 @@ function loginCustomer(){
   http_request.send();
 }
 
-//Login do fornecedor
+//Faz o login do fornecedor
 function loginProvider(){
   var email  = document.getElementById('email').value;
   var pass  = document.getElementById('pwd').value;
@@ -107,7 +109,7 @@ function loginProvider(){
     if (http_request.readyState == 4 && http_request.status == 200){
       var jsonObj = JSON.parse(http_request.responseText);
       var id = JSON.stringify(jsonObj.providerId);
-      sessionStorage.setItem('userId', id);
+      sessionStorage.setItem('userId', id); //guarda o id do fornecedor na sessão.
       sessionStorage.setItem('custProv', 2); //Guarda na sessão se é um customer ou um provider - 1 = customer, 2 = provider.
       window.location.href = "profile_provider.html";
     }else if (http_request.readyState == 4 && http_request.status == 401){
@@ -121,8 +123,9 @@ function loginProvider(){
   http_request.send();
 }
 
+//Ao fazer o logout muda as variáveis da sessão.
 function logout(){
-  sessionStorage.setItem('userId', 'logout');
-  sessionStorage.setItem('custProv', 0);
-  sessionStorage.setItem('cart', '');
+  sessionStorage.setItem('userId', 'logout'); //Id do usário logado
+  sessionStorage.setItem('custProv', 0); // Verifica se é fornecedor ou comprador
+  sessionStorage.setItem('cart', ''); //Guarda na sessão um vetor com os id's dos produtos que forem adicionados ao carrinho.
 }

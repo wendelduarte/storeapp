@@ -41,8 +41,6 @@ public class Customer {
 	@NotNull
 	private String password;
 	
-	private String bilingAddres;
-	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy = "customer")
 	private Set<CardCustomer> cardCustomer;
 	
@@ -105,12 +103,6 @@ public class Customer {
 	}
 	public void setCelCustomer(String celCustomer) {
 		this.celCustomer = celCustomer;
-	}
-	public String getBilingAddres() {
-		return bilingAddres;
-	}
-	public void setBilingAddres(String bilingAddres) {
-		this.bilingAddres = bilingAddres;
 	}
 
 	public Set<CardCustomer> getCardCustomer() {

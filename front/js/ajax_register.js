@@ -2,7 +2,7 @@
 
 
 //*****************Funções para cadastro********************//
-//Função para cadastrar formulário do cliente
+//Função para cadastrar um cliente
 function postCustomer(){
   var data_file = "http://localhost:8080/customer/post";
   var http_request = new XMLHttpRequest();
@@ -18,6 +18,7 @@ function postCustomer(){
   if(name == "" || cpf == "" || email == "" || pass ==""){
     alert("Preencha todos os campos obrigatórios");
   }else{
+    window.location.href = "login_customer.html";
     http_request.open("POST", data_file);
     http_request.setRequestHeader("Content-Type", "application/json");
     http_request.send(JSON.stringify({
@@ -55,6 +56,7 @@ function postProvider(){
   if(bussiness_name == "" || trade_name == "" || cnpj == "" || address =="" || state == "" || email == "" || pass == "" || tel == "" || name_contact == ""){
     alert("Preencha todos os campos obrigatórios");
   }else{
+    window.location.href = "login_provider.html";
     http_request.open("POST", data_file);
     http_request.setRequestHeader("Content-Type", "application/json");
     http_request.send(JSON.stringify({
@@ -247,30 +249,6 @@ function updateAddress(id){
                 }));
   }
 }
-/*  
-function informationToUpdateCustomerAddress(idAddress) {
-  idCustomer = sessionStorage.getItem('userId');
-  var data_file = "http://localhost:8080/address/"+idCustomer+"/"+idAddress;
-  var http_request = new XMLHttpRequest();
-
-  http_request.onreadystatechange = function() {
-
-     if (http_request.readyState == 4 && http_request.status == 200) {
-      var jsonObj = JSON.parse(http_request.responseText);
-
-      document.getElementById('address'+idAddress).value = jsonObj.customerAddress;
-      document.getElementById('state-customer'+idAddress).value = jsonObj.customerState;
-      document.getElementById('city-customer'+idAddress).value = jsonObj.customerCity;
-      document.getElementById('cep-customer'+idAddress).value = jsonObj.cepCustomer;
-      document.getElementById('complement-customer'+idAddress).value = jsonObj.complementAddressCustomer;
-
-    }
-  http_request.open("GET", data_file, true);
-  http_request.send();
-  }
-}
-*/
-
 
 //******Fornecedor*******//
 //Carrega informações nas caixas de texto da página de atualização do fornecedor
@@ -367,54 +345,5 @@ function updateProduct(id){
                       price: price,
                       description: description
                 }));
-  }
-}
-
-
-//********************************//
-//********************************//
-//********************************//
-
-//Pega a data atual para armazenar no pedido de compra.
-function atualDate(){
-  var dNow = new Date();
-  var localdate = dNow.getDate() + '/' + (dNow.getMonth()+1) + '/' + dNow.getFullYear();
-  return localdate;
-}
-
-//Gera um pedido de compra (ao clicar em finalizar pedido no carrinho)
-
-function finishOrder(){
-  var products = JSON.parse(sessionStorage.getItem('cart'));
-  if(products.length == 0){
-    alert("Adicione produtos ao carrinho para finalizar seu pedido")
-    window.location.href = "index.html";
-  }else{
-    var data_file = "http://localhost:8080/order";
-    var http_request = new XMLHttpRequest();
-
-    var idCustomer = sessionStorage.getItem('userId');
-    var date = atualDate();
-    var product = [];
-    total = JSON.parse(document.getElementById("total-price").innerHTML);
-
-    for(var i=0; i<products.length; i++){
-      var qtd = document.getElementById('qtd'+products[i] ).value;
-      var jsonProduct = {"productId": products[i], "quantityProduct": qtd};
-      product.push(jsonProduct);
-    }
-
-    alert("Pedido finalizado");
-    window.location.href = "purchases.html";
-    cart();
-    http_request.open("POST", data_file);
-    http_request.setRequestHeader("Content-Type", "application/json");
-    http_request.send(JSON.stringify({ 
-                        customerId: idCustomer,
-                        statusOrderId: 1,
-                        productOrder: product,
-                        date: date,
-                        total: total
-                  }));
   }
 }

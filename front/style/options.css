@@ -2,14 +2,15 @@
 /*fundo */
 body {
     background: url(../images/coding.jpeg) no-repeat center top fixed;
-
+    /*
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
+    */
     background-size: cover;
     color: white;
 }
-
+	
 
 section ul{
 	margin: auto auto auto auto;

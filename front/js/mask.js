@@ -1,3 +1,4 @@
+//Função de mascara, coloca uma mascara quando o usuário está fazendo o cadastro.
 function mask(i,t){
    
    var v = i.value;

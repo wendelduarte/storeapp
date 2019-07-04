@@ -38,7 +38,7 @@ public class CustomerController {
 	
 	@CrossOrigin
 	@GetMapping("/customer/{id}")
-	public ResponseEntity<Optional<?>> getOneProduct(@PathVariable Long id){
+	public ResponseEntity<Optional<?>> getOneCustomer(@PathVariable Long id){
 		Optional<Customer> customer = customerService.getOneCustomer(id);
 		return utilM.getOne(customer);
 	}

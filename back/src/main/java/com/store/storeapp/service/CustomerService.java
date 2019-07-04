@@ -41,7 +41,6 @@ public class CustomerService {
 						record.setDateBirthCustomer(updateCustomer.getDateBirthCustomer());
 						record.setTelCustomer(updateCustomer.getTelCustomer());
 						record.setCelCustomer(updateCustomer.getCelCustomer());
-						record.setBilingAddres(updateCustomer.getBilingAddres());
 						Customer update = customerRepository.save(record);
 						return update;
 					});
