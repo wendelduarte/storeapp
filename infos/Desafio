@@ -1,0 +1,17 @@
+Desafio:
+Precisamos criar um Loja Virtual, para uma fornecedora de materias médicos e medicamentos.
+É preciso que o fornecedor possam cadastrar seus produtos e valores de venda.
+O comprador deve poder buscar/selcionar os produtos e adicionar a um carrinho.
+O carrinho deve gerar um pedido de compra.
+
+
+Utilizar:
+
+-Html/Bootstrap
+-JavaScript
+
+-MySQL
+
+-SpringBoot
+
+-GIT

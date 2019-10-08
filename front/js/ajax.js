@@ -141,8 +141,8 @@ function loadPurchaseInformation(idPurchase){
         document.getElementById("status").innerHTML = "<p class='bold'>Status: <p>"+ jsonObj.orderStatus.orderStatus;
         for(var j =0; j<jsonObj.productOrder.length; j++){
           document.getElementById("products").innerHTML += "<p>Produto: "+jsonObj.productOrder[j].product.name+"</p>"+
-                                                          "<p>Preço unit.:"+jsonObj.productOrder[j].product.price+"</p>"+
-                                                          "<p>Qtd.:"+jsonObj.productOrder[j].quantityProduct+"</p><hr/>";
+                                                          "<p>Preço unit.: R$"+jsonObj.productOrder[j].product.price+"</p>"+
+                                                          "<p>Qtd.: "+jsonObj.productOrder[j].quantityProduct+"</p><hr/>";
         }
 
         document.getElementById("order-date").innerHTML = "<p class='bold'> Data da compra: </p>"+jsonObj.orderDate; 
