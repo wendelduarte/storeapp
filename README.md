@@ -1,4 +1,4 @@
-<h2>Este é o meu priemiro projeto</h2>
+<h2>Este é o meu primeiro projeto</h2>
 
 Antes da minha primeira experiência profissional eu tive apenas o contato com exercícios de classe, ao entrar em meu primeiro estágio foi me passado um projeto para que eu pudesse ter um conhecimento inicial com algumas tecnologias.
 
