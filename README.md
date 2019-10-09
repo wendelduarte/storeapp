@@ -18,11 +18,11 @@ Utilizar:
 	<li>GIT</li>
 </ul>
 
-<h3>Sobre o projeto<h3>
+<h3>Sobre o projeto</h3>
 
 O tempo de desenvolvimento foi de aproximadamente 3 meses (não contando a edição deste arquivo README).
 
-<h3>Tecnologias Utilizadas<h3>
+<h3>Tecnologias Utilizadas</h3>
 
 **Front-end**
 <ul>
