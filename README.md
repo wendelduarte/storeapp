@@ -35,7 +35,7 @@ O tempo de desenvolvimento foi de aproximadamente 3 meses (não contando a ediç
 
 **Back-end**
 <ul>
-	<li>Java 11</li>
+	<li>Java 8</li>
 	<li>JPA/Hibernate</li>
 	<li>SpringBoot</li>
 	<li>MySQL</li>
